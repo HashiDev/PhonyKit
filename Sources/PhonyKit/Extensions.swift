@@ -1,5 +1,5 @@
 
-// String.random(in: "A"..."Z")
+import Foundation
 
 internal extension Character {
     

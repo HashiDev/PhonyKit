@@ -1,3 +1,4 @@
+import Foundation
 
 public class Dates {
     var phony: Phony!
