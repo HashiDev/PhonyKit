@@ -8,6 +8,7 @@ public class Phony {
     public var definitions: Definitions
     public var hacker: Hacker
     public var helpers: Helpers
+    public var internet: Internet
     public var image: Images
     public var lorem: Lorem
     public var name: Name
@@ -23,6 +24,7 @@ public class Phony {
         self.definitions = Definitions()
         self.hacker = Hacker()
         self.helpers = Helpers()
+        self.internet = Internet()
         self.image = Images()
         self.lorem = Lorem()
         self.name = Name()
@@ -36,6 +38,7 @@ public class Phony {
         self.date.phony = self
         self.hacker.phony = self
         self.helpers.phony = self
+        self.internet.phony = self
         self.image.phony = self
         self.lorem.phony = self
         self.name.phony = self
