@@ -45,5 +45,6 @@ public class Phony {
         self.phoneNumber.phony = self
         self.random.phony = self
         self.video.phony = self
+        self.definitions = DefaultDefinitions()
     }
 }
