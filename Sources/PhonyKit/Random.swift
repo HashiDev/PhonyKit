@@ -1,87 +1,68 @@
 import Foundation
 
-public class Random {
-    var phony: Phony!
+// Random
 
-    public func dictionaryElement<T>(dictionary: [String: T]) -> T? {
+public extension Phony {
+
+    func dictionaryElement<T>(dictionary: [String: T]) -> T? {
         let key = dictionary.keys.sorted().randomElement() ?? ""
         return dictionary[key]
     }
 
-    private func commerce() -> Commerce {
-        return self.phony.commerce
-    }
-
-    private func company() -> Company {
-        return self.phony.company
-    }
-
-    private func address() -> Address {
-        return self.phony.address
-    }
-
-    private func hacker() -> Hacker {
-        return self.phony.hacker
-    }
-
-    private func name() -> Name {
-        return self.phony.name
-    }
-
-    public func word() -> String {
+    func realWord() -> String {
         switch Int.random(in: 0...23) {
         case 0:
-            return self.commerce().department()
+            return self.department()
         case 1:
-            return self.commerce().productName()
+            return self.productName()
         case 2:
-            return self.commerce().productAdjective()
+            return self.productAdjective()
         case 3:
-            return self.commerce().productMaterial()
+            return self.productMaterial()
         case 4:
-            return self.commerce().product()
+            return self.product()
         case 5:
-            return self.commerce().color()
+            return self.color()
         case 6:
-            return self.company().catchPhraseAdjective()
+            return self.catchPhraseAdjective()
         case 7:
-            return self.company().catchPhraseDescriptor()
+            return self.catchPhraseDescriptor()
         case 8:
-            return self.company().catchPhraseNoun()
+            return self.catchPhraseNoun()
         case 9:
-            return self.company().bsAdjective()
+            return self.bsAdjective()
         case 10:
-            return self.company().bsBuzz()
+            return self.bsBuzz()
         case 11:
-            return self.company().bsNoun()
+            return self.bsNoun()
         case 12:
-            return self.address().streetSuffix()
+            return self.streetSuffix()
         case 13:
-            return self.address().county()
+            return self.county()
         case 14:
-            return self.address().country()
+            return self.country()
         case 15:
-            return self.address().state()
+            return self.state()
         case 16:
-            return self.hacker().noun()
+            return self.noun()
         case 17:
-            return self.hacker().verb()
+            return self.verb()
         case 18:
-            return self.hacker().adjective()
+            return self.adjective()
         case 19:
-            return self.hacker().ingverb()
+            return self.ingverb()
         case 20:
-            return self.hacker().abbreviation()
+            return self.abbreviation()
         case 21:
-            return self.name().jobDescriptor()
+            return self.jobDescriptor()
         case 22:
-            return self.name().jobArea()
+            return self.jobArea()
         default:
-            return self.name().jobType()
+            return self.jobType()
         }
     }
 
-    public func words(toReturn count: Int = Int.random(in: 1...3)) -> String {
+    func realWords(toReturn count: Int = Int.random(in: 1...3)) -> String {
         var words = ""
         for _ in 1...count {
             words += "\(self.word()) "
@@ -90,15 +71,8 @@ public class Random {
         return words.trimmingCharacters(in: .whitespaces)
     }
 
-    public func image() -> String {
-        return self.phony.image.image()
-    }
 
-    public func image() -> URL {
-        return self.phony.image.image()
-    }
-
-    public func alpha(count: Int = 5, upperCased: Bool = false) -> String {
+    func alpha(count: Int = 5, upperCased: Bool = false) -> String {
         var wholeString = ""
         for _ in 1...count {
             wholeString += String.random(in: "a"..."z")
@@ -110,7 +84,7 @@ public class Random {
         return wholeString
     }
 
-    public func alphaNumeric(count: Int = 5) -> String {
+    func alphaNumeric(count: Int = 5) -> String {
         var wholeString = ""
         for _ in 1...count {
             wholeString += Bool.random() ? String.random(in: "0"..."9") : String.random(in: "a"..."z")
@@ -118,7 +92,7 @@ public class Random {
         return wholeString
     }
 
-    public func hexaDecimal(count: Int = 6) -> String {
+    func hexaDecimal(count: Int = 6) -> String {
         var wholeString = ""
         for _ in 1...count {
             wholeString += Bool.random() ? String.random(in: "0"..."9") : String.random(in: "A"..."F")

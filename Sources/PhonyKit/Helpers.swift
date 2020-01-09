@@ -1,16 +1,16 @@
+// Helpers
 
-public class Helpers {
-    var phony: Phony!
+public extension Phony {
 
-    public func slugify(str: String) -> String {
+    func slugify(str: String) -> String {
         return str.replacingOccurrences(of: " ", with: "-").trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    public func snakify(str: String) -> String {
+    func snakify(str: String) -> String {
         return str.uppercased().replacingOccurrences(of: " ", with: "_").trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    public func replaceSymbolWithNumber(string: String, symbol: String = "#") -> String {
+    func replaceSymbolWithNumber(string: String, symbol: String = "#") -> String {
         return string.reduce(into: "") { result, char in
             switch char {
             case symbol.first:
@@ -23,7 +23,7 @@ public class Helpers {
         }
     }
 
-    public func replaceSymbols(string: String) -> String {
+    func replaceSymbols(string: String) -> String {
         return string.reduce(into: "") { result, char in
             switch char {
             case "#":
@@ -38,7 +38,7 @@ public class Helpers {
         }
     }
 
-    public func repeatString(string: String, num: Int) -> String {
+    func repeatString(string: String, num: Int) -> String {
         var text = ""
 
         for _ in 0...num {

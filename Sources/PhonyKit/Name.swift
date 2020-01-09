@@ -1,29 +1,30 @@
 
-public class Name {
-    public enum Gender {
+// Name
+
+public extension Phony {
+    enum Gender {
         case male, female
     }
-
-    var phony: Phony!
 
     /// Creates a genderized first name
     ///
     /// - Parameter gender: Optional gender
     /// - Returns: a gender-based first name
-    public func firstName(for gender: Name.Gender = .male) -> String {
+    func firstName(for gender: Gender? = nil) -> String {
+        let gender = gender ?? [Gender.female, Gender.male].randomElement()!
         switch gender {
         case .male:
-            return self.phony.definitions.maleFirstName.randomElement()!
+            return self.definitions.maleFirstName.randomElement()!
         case .female:
-            return self.phony.definitions.femaleFirstName.randomElement()!
+            return self.definitions.femaleFirstName.randomElement()!
         }
     }
 
     /// Creates a last name
     ///
     /// - Returns: a gender-based first name
-    public func lastName() -> String {
-        return self.phony.definitions.lastName.randomElement()!
+    func lastName() -> String {
+        return self.definitions.lastName.randomElement()!
     }
 
     /// Function that returns a full name
@@ -33,7 +34,7 @@ public class Name {
     ///   - lastName: Optional last name
     ///   - gender: Optional gender
     /// - Returns: A fake full name
-    public func findName(for firstName: String? = nil, or lastName: String? = nil, andOr gender: Gender? = nil) -> String {
+    func findName(for firstName: String? = nil, or lastName: String? = nil, andOr gender: Gender? = nil) -> String {
         let gender = gender ?? self.gender()
         let firstName = firstName ?? self.firstName(for: gender)
         let lastName = lastName ?? self.lastName()
@@ -48,45 +49,45 @@ public class Name {
         }
     }
 
-    public func jobTitle() -> String {
+    func jobTitle() -> String {
         return "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
     }
 
-    public func gender() -> Gender {
+    func gender() -> Gender {
         return [Gender.male, Gender.female].randomElement()!
     }
 
-    public func prefix(for gender: Gender = .male) -> String {
+    func prefix(for gender: Gender = .male) -> String {
         switch gender {
         case .male:
-            return self.phony.definitions.maleNamePrefix.randomElement()!
+            return self.definitions.maleNamePrefix.randomElement()!
         default:
-            return self.phony.definitions.femaleNamePrefix.randomElement()!
+            return self.definitions.femaleNamePrefix.randomElement()!
         }
     }
 
-    public func suffix(for gender: Gender = .male) -> String {
+    func suffix(for gender: Gender = .male) -> String {
         switch gender {
         case .male:
-            return self.phony.definitions.maleNameSuffix.randomElement()!
+            return self.definitions.maleNameSuffix.randomElement()!
         default:
-            return self.phony.definitions.femaleNameSuffix.randomElement()!
+            return self.definitions.femaleNameSuffix.randomElement()!
         }
     }
 
-    public func title() -> String {
+    func title() -> String {
         return "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
     }
 
-    public func jobDescriptor() -> String {
-        return self.phony.definitions.titleDecriptor.randomElement()!
+    func jobDescriptor() -> String {
+        return self.definitions.titleDecriptor.randomElement()!
     }
 
-    public func jobArea() -> String {
-        return self.phony.definitions.titleLevel.randomElement()!
+    func jobArea() -> String {
+        return self.definitions.titleLevel.randomElement()!
     }
 
-    public func jobType() -> String {
-        return self.phony.definitions.titleJob.randomElement()!
+    func jobType() -> String {
+        return self.definitions.titleJob.randomElement()!
     }
 }
