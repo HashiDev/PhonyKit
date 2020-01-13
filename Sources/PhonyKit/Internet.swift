@@ -104,4 +104,12 @@ public extension Phony {
         }
         return mac
     }
+    
+    func website() -> String {
+        self.definitions.websites.randomElement()!
+    }
+    
+    func website() -> URL {
+        URL(string: self.definitions.websites.randomElement()!)!
+    }
 }
