@@ -1,27 +1,28 @@
-public class Hacker {
-    var phony: Phony!
 
-    public func abbreviation() -> String {
-        return self.phony.definitions.hackerAbbreviation.randomElement()!
+//Hacker
+
+public extension Phony {
+    func abbreviation() -> String {
+        return self.definitions.hackerAbbreviation.randomElement()!
     }
 
-    public func adjective() -> String {
-        return self.phony.definitions.hackerAdjective.randomElement()!
+    func adjective() -> String {
+        return self.definitions.hackerAdjective.randomElement()!
     }
 
-    public func noun() -> String {
-        return self.phony.definitions.hackerNoun.randomElement()!
+    func noun() -> String {
+        return self.definitions.hackerNoun.randomElement()!
     }
 
-    public func verb() -> String {
-        return self.phony.definitions.hackerVerb.randomElement()!
+    func verb() -> String {
+        return self.definitions.hackerVerb.randomElement()!
     }
 
-    public func ingverb() -> String {
-        return self.phony.definitions.hackerIngVerb.randomElement()!
+    func ingverb() -> String {
+        return self.definitions.hackerIngVerb.randomElement()!
     }
 
-    public func phrase() -> String {
+    func phrase() -> String {
         let abbreviation = self.abbreviation()
         let adjective = self.adjective()
         let ingverb = self.ingverb()

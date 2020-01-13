@@ -1,17 +1,14 @@
 import Foundation
 
-public class Internet {
-    var phony: Phony!
+// Internet
 
-    public func avatar() -> String {
-        return self.phony.definitions.avatarUri.randomElement()!
+public extension Phony {
+
+    func email(firstName: String? = nil, lastName: String? = nil, provider: String = ["gmail.com", "yahoo.com", "hotmail.com"].randomElement()!) -> String {
+        return self.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider
     }
 
-    public func email(firstName: String? = nil, lastName: String? = nil, provider: String = ["gmail.com", "yahoo.com", "hotmail.com"].randomElement()!) -> String {
-        return self.phony.helpers.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider
-    }
-
-    public func exampleEmail(firstName: String? = nil, lastName: String? = nil) -> String {
+    func exampleEmail(firstName: String? = nil, lastName: String? = nil) -> String {
         let provider = [
             "example.org",
             "example.com",
@@ -20,9 +17,9 @@ public class Internet {
         return self.email(firstName: firstName, lastName: lastName, provider: provider)
     }
 
-    public func userName(firstName: String? = nil, lastName: String? = nil) -> String {
-        let firstName = firstName ?? self.phony.name.firstName()
-        let lastName = lastName ?? self.phony.name.lastName()
+    func userName(firstName: String? = nil, lastName: String? = nil) -> String {
+        let firstName = firstName ?? self.firstName()
+        let lastName = lastName ?? self.lastName()
         switch Int.random(in: 0...2) {
         case 0:
             return "\(firstName)\(Int.random(in: 2...10000))".trimmingCharacters(in: .whitespacesAndNewlines)
@@ -33,19 +30,19 @@ public class Internet {
         }
     }
 
-    public func `protocol`() -> String {
+    func `protocol`() -> String {
         return ["http", "https"].randomElement()!
     }
 
-    public func url() -> String {
+    func url() -> String {
         return self.protocol() + "://" + self.domainName()
     }
 
-    public func domainName() -> String {
+    func domainName() -> String {
         return self.domainWord() + "." + self.domainSuffix()
     }
 
-    public func domainSuffix() -> String {
+    func domainSuffix() -> String {
         return [
             "com",
             "biz",
@@ -56,24 +53,24 @@ public class Internet {
         ].randomElement()!
     }
 
-    public func domainWord() -> String {
+    func domainWord() -> String {
         if Bool.random() {
-            return (self.phony.random.word() + self.phony.random.word()).lowercased()
+            return (self.word() + self.word()).lowercased()
         } else {
-            return self.phony.lorem.slug(wordCount: 2).lowercased()
+            return self.slug(wordCount: 2).lowercased()
         }
     }
 
-    public func ipAddress() -> String {
+    func ipAddress() -> String {
         return "\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255))"
     }
 
-    public func ipv6() -> String {
-        let hexa = self.phony.random.hexaDecimal
+    func ipv6() -> String {
+        let hexa = self.hexaDecimal
         return "\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4))"
     }
 
-    public func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> String {
+    func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> String {
         let red = (Int.random(in: 0...256) + baseRed255) / 2
         let green = (Int.random(in: 0...256) + baseGreen255) / 2
         let blue = (Int.random(in: 0...256) + baseBlue255) / 2
@@ -93,8 +90,8 @@ public class Internet {
         return "#\(redStr)\(greenStr)\(blueStr)"
     }
 
-    public func macAddress() -> String {
-        let hexa = self.phony.random.hexaDecimal
+    func macAddress() -> String {
+        let hexa = self.hexaDecimal
         var mac = ""
 
         for i in 0..<12 {
@@ -106,5 +103,13 @@ public class Internet {
             
         }
         return mac
+    }
+    
+    func website() -> String {
+        self.definitions.websites.randomElement()!
+    }
+    
+    func website() -> URL {
+        URL(string: self.definitions.websites.randomElement()!)!
     }
 }

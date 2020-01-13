@@ -1,14 +1,15 @@
 
 import Foundation
 
-public class Video {
-    var phony: Phony!
+// Video
+
+public extension Phony {
     
-    public func video() -> String {
-        return self.phony.definitions.videoUris.randomElement()!
+    func video() -> String {
+        return self.definitions.videoUris.randomElement()!
     }
 
-    public func video() -> URL {
+    func video() -> URL {
         return URL(string: self.video())!
     }
 }

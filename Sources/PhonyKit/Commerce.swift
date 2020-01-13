@@ -1,27 +1,28 @@
-public class Commerce {
-    var phony: Phony!
+// Commerce
 
-    public func color() -> String {
-        return self.phony.definitions.colors.randomElement()!
+public extension Phony {
+
+    func color() -> String {
+        return self.definitions.colors.randomElement()!
     }
 
-    public func department() -> String {
-        return self.phony.definitions.departments.randomElement()!
+    func department() -> String {
+        return self.definitions.departments.randomElement()!
     }
 
-    public func productName() -> String {
+    func productName() -> String {
         return "\(self.productAdjective()) \(self.productMaterial()) \(self.product())"
     }
 
-    public func productAdjective() -> String {
-        return self.phony.definitions.productAdjective.randomElement()!
+    func productAdjective() -> String {
+        return self.definitions.productAdjective.randomElement()!
     }
 
-    public func productMaterial() -> String {
-        return self.phony.definitions.productMaterial.randomElement()!
+    func productMaterial() -> String {
+        return self.definitions.productMaterial.randomElement()!
     }
 
-    public func product() -> String {
-        return self.phony.definitions.productProduct.randomElement()!
+    func product() -> String {
+        return self.definitions.productProduct.randomElement()!
     }
 }

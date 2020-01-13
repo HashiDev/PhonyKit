@@ -1,12 +1,13 @@
 
-public class Lorem {
-    var phony: Phony!
+// Lorem
 
-    public func word() -> String {
-        return self.phony.definitions.lorem.randomElement()!
+public extension Phony {
+
+    func word() -> String {
+        return self.definitions.lorem.randomElement()!
     }
 
-    public func words(_ num: Int = 3, _ separator: String = " ") -> String {
+    func words(_ num: Int = 3, _ separator: String = " ") -> String {
         var words = ""
         for _ in 1...num {
             words += "\(self.word())\(separator)"
@@ -14,16 +15,16 @@ public class Lorem {
         return words.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    public func sentence() -> String {
+    func sentence() -> String {
         let sentence = self.words(Int.random(in: 3...10))
         return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
     }
 
-    public func slug(wordCount: Int = 3) -> String {
-        return self.phony.helpers.slugify(str: self.words(wordCount))
+    func slug(wordCount: Int = 3) -> String {
+        return self.slugify(str: self.words(wordCount))
     }
 
-    public func sentences(_ sentenceCount: Int = Int.random(in: 2...6), _ separator: String = " ") -> String {
+    func sentences(_ sentenceCount: Int = Int.random(in: 2...6), _ separator: String = " ") -> String {
         var sentences = ""
 
         for _ in 1...sentenceCount {
@@ -33,11 +34,11 @@ public class Lorem {
         return sentences.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    public func paragraph(_ sentenceCount: Int = 3, _ separator: String = " ") -> String {
+    func paragraph(_ sentenceCount: Int = 3, _ separator: String = " ") -> String {
         return self.sentences(sentenceCount, separator)
     }
 
-    public func paragraphs(_ paragraphCount: Int = 3, _ separator: String = "\n \r") -> String {
+    func paragraphs(_ paragraphCount: Int = 3, _ separator: String = "\n \r") -> String {
         var paragraphs = ""
 
         for _ in 1...paragraphCount {
@@ -47,7 +48,7 @@ public class Lorem {
         return paragraphs.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    public func text() -> String {
+    func text() -> String {
         switch Int.random(in: 0...6) {
         case 0:
             return self.word()
@@ -66,7 +67,7 @@ public class Lorem {
         }
     }
 
-    public func lines(_ lineCount: Int = Int.random(in: 1...5), _ separator: String = "\n") -> String {
+    func lines(_ lineCount: Int = Int.random(in: 1...5), _ separator: String = "\n") -> String {
         return self.sentences(lineCount, separator)
     }
 }

@@ -1,46 +1,47 @@
 import Foundation
 
-public class Address {
-    var phony: Phony!
+// Address
 
-    public func zipCode(_ format: String? = nil) -> String {
-        let format = format ?? self.phony.definitions.postcode.randomElement()!
-        return self.phony.helpers.replaceSymbols(string: format)
+public extension Phony {
+
+    func zipCode(_ format: String? = nil) -> String {
+        let format = format ?? self.definitions.postcode.randomElement()!
+        return self.replaceSymbols(string: format)
     }
 
-    public func city() -> String {
+    func city() -> String {
         let format = Int.random(in: 0...3)
 
         switch format {
         case 0:
-            return "\(self.cityPrefix()) \(self.phony.name.firstName()) \(self.citySuffix())"
+            return "\(self.cityPrefix()) \(self.firstName(for: nil)) \(self.citySuffix())"
         case 1:
-            return "\(self.cityPrefix()) \(self.phony.name.firstName())"
+            return "\(self.cityPrefix()) \(self.firstName(for: nil))"
         case 2:
-            return "\(self.phony.name.firstName())\(self.citySuffix())"
+            return "\(self.firstName())\(self.citySuffix().lowercased())"
         default:
-            return "\(self.phony.name.lastName())\(self.citySuffix())"
+            return "\(self.lastName())\(self.citySuffix().lowercased())"
         }
     }
 
-    public func cityPrefix() -> String {
-        return self.phony.definitions.cityPrefix.randomElement()!
+    func cityPrefix() -> String {
+        return self.definitions.cityPrefix.randomElement()!
     }
 
-    public func citySuffix() -> String {
-        return self.phony.definitions.citySuffix.randomElement()!
+    func citySuffix() -> String {
+        return self.definitions.citySuffix.randomElement()!
     }
 
-    public func streetName() -> String {
+    func streetName() -> String {
         var suffix = self.streetSuffix()
         if suffix.isEmpty {
             suffix = " " + suffix
         }
 
-        return Bool.random() ? self.phony.name.lastName() + suffix : self.phony.name.firstName() + suffix
+        return Bool.random() ? self.lastName() + suffix : self.firstName() + suffix
     }
 
-    public func streetAddress(useFullAddress: Bool = false) -> String {
+    func streetAddress(useFullAddress: Bool = false) -> String {
         let symbols = Int.random(in: 3...5)
         var string = ""
 
@@ -48,59 +49,59 @@ public class Address {
             string += "#"
         }
 
-        let address = "\(self.phony.helpers.replaceSymbolWithNumber(string: string)) \(self.streetName())"
+        let address = "\(self.replaceSymbolWithNumber(string: string)) \(self.streetName())"
 
         return useFullAddress ? "\(address) \(self.secondaryAddress())" : address
     }
 
-    public func streetSuffix() -> String {
-        return self.phony.definitions.streetSuffix.randomElement()!
+    func streetSuffix() -> String {
+        return self.definitions.streetSuffix.randomElement()!
     }
 
-    public func streetPrefix() -> String {
-        return self.phony.definitions.streetPrefix.randomElement()!
+    func streetPrefix() -> String {
+        return self.definitions.streetPrefix.randomElement()!
     }
 
-    public func secondaryAddress() -> String {
-        return self.phony.helpers.replaceSymbolWithNumber(string: ["Apt. ###", "Suite ###"].randomElement()!)
+    func secondaryAddress() -> String {
+        return self.replaceSymbolWithNumber(string: ["Apt. ###", "Suite ###"].randomElement()!)
     }
 
-    public func county() -> String {
-        return self.phony.definitions.county.randomElement()!
+    func county() -> String {
+        return self.definitions.county.randomElement()!
     }
 
-    public func country() -> String {
-        return self.phony.definitions.country.randomElement()!
+    func country() -> String {
+        return self.definitions.country.randomElement()!
     }
 
-    public func countryCode() -> String {
-        return self.phony.definitions.countryCode.randomElement()!
+    func countryCode() -> String {
+        return self.definitions.countryCode.randomElement()!
     }
 
-    public func state() -> String {
-        return self.phony.definitions.state.randomElement()!
+    func state() -> String {
+        return self.definitions.state.randomElement()!
     }
 
-    public func stateAbbr() -> String {
-        return self.phony.definitions.stateAbbr.randomElement()!
+    func stateAbbr() -> String {
+        return self.definitions.stateAbbr.randomElement()!
     }
 
-    public func latitude(in range: ClosedRange<Float> = -90...90, precision: Int = 4) -> Float {
+    func latitude(in range: ClosedRange<Float> = -90...90, precision: Int = 4) -> Float {
         return Float.random(in: range).rounded(toPlaces: precision)
     }
 
-    public func longitude(in range: ClosedRange<Float> = -180...180, precision: Int = 4) -> Float {
+    func longitude(in range: ClosedRange<Float> = -180...180, precision: Int = 4) -> Float {
         return Float.random(in: range).rounded(toPlaces: precision)
     }
 
-    public func direction(useAbbreviation: Bool = false) -> String {
+    func direction(useAbbreviation: Bool = false) -> String {
         if useAbbreviation {
-            return self.phony.definitions.direction.randomElement()!
+            return self.definitions.direction.randomElement()!
         }
-        return self.phony.definitions.directionAbbr.randomElement()!
+        return self.definitions.directionAbbr.randomElement()!
     }
 
-    public func nearbyGPSCoordinate(coordinate: [Float]? = nil, radius: Float? = nil, isMetric: Bool = false) -> [Float] {
+    func nearbyGPSCoordinate(coordinate: [Float]? = nil, radius: Float? = nil, isMetric: Bool = false) -> [Float] {
         func degreesToRadians(degrees: Float) -> Float {
             return degrees * (Float.pi / 180.0)
         }
@@ -135,17 +136,12 @@ public class Address {
             return [radiansToDegrees(radians: lat2).distance(to: 4), radiansToDegrees(radians: lon2).distance(to: 4)]
         }
 
-        // If there is no coordinate, the best we can do is return a random GPS coordinate.
         guard let coordinate = coordinate else {
             return [self.latitude(), self.longitude()]
         }
 
         let radius = radius ?? 10.0
 
-        // TODO: implement either a gaussian/uniform distribution of points in cicular region.
-        // Possibly include param to function that allows user to choose between distributions.
-
-        // This approach will likely result in a higher density of points near the center.
         return coordinateWithOffset(coordinate: coordinate, bearing: degreesToRadians(degrees: Float.random(in: 0..<1) * 360.0), distance: radius, isMetric: isMetric)
     }
 }
