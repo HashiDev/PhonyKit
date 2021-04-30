@@ -1,7 +1,6 @@
 
 // PhoneNumber
 public extension Phony {
-
     func phoneNumber(format: String? = nil) -> String {
         let format = format ?? self.phoneFormat()
         return self.replaceSymbolWithNumber(string: format)

@@ -1,7 +1,6 @@
 // Company
 
 public extension Phony {
-    
     private func suffixes() -> [String] {
         return self.definitions.companySuffix
     }

@@ -3,7 +3,6 @@ import Foundation
 // Random
 
 public extension Phony {
-
     func dictionaryElement<T>(dictionary: [String: T]) -> T? {
         let key = dictionary.keys.sorted().randomElement() ?? ""
         return dictionary[key]
@@ -70,7 +69,6 @@ public extension Phony {
 
         return words.trimmingCharacters(in: .whitespaces)
     }
-
 
     func alpha(count: Int = 5, upperCased: Bool = false) -> String {
         var wholeString = ""

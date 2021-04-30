@@ -4,7 +4,6 @@ import Foundation
 // Images
 
 public extension Phony {
-    
     enum UnsplashCategory: String, CaseIterable {
         case buildings
         case objects

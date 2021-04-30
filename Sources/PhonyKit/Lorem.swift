@@ -2,7 +2,6 @@
 // Lorem
 
 public extension Phony {
-
     func word() -> String {
         return self.definitions.lorem.randomElement()!
     }

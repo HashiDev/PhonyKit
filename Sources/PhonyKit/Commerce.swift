@@ -1,7 +1,6 @@
 // Commerce
 
 public extension Phony {
-
     func color() -> String {
         return self.definitions.colors.randomElement()!
     }

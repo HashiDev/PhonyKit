@@ -4,12 +4,12 @@ public class Phony {
         case harryPotter
         case custom(Definitions)
     }
-    
+
     public static var `default`: Phony = Phony()
     public var definitions: Definitions = DefaultDefinitions()
 
     private init() {}
-    
+
     public static func setDefaultDefinitions(to def: DefinitionsType) {
         switch def {
         case .default:

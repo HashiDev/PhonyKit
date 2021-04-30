@@ -1,7 +1,6 @@
 // Helpers
 
 public extension Phony {
-
     func slugify(str: String) -> String {
         return str.replacingOccurrences(of: " ", with: "-").trimmingCharacters(in: .whitespacesAndNewlines)
     }

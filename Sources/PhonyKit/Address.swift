@@ -3,7 +3,6 @@ import Foundation
 // Address
 
 public extension Phony {
-
     func zipCode(_ format: String? = nil) -> String {
         let format = format ?? self.definitions.postcode.randomElement()!
         return self.replaceSymbols(string: format)

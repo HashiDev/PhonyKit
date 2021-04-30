@@ -1,21 +1,20 @@
 import Foundation
 
-//Dates
+// Dates
 
 public extension Phony {
-    
     private func yearsToSeconds(numberOfYears: Int) -> Double {
         return Double(numberOfYears * 365 * 24 * 3600)
     }
-    
+
     private func daysToSeconds(numberOfDays: Int) -> Double {
         return Double(numberOfDays * 24 * 3600)
     }
-    
+
     func past(numberOfYears: Int = 1, refDate: Date = Date()) -> Date {
         var past = refDate.timeIntervalSince1970
         past -= Double.random(in: 0...self.yearsToSeconds(numberOfYears: numberOfYears))
-        
+
         return Date(timeIntervalSince1970: past)
     }
 

@@ -3,7 +3,6 @@ import Foundation
 // Internet
 
 public extension Phony {
-
     func email(firstName: String? = nil, lastName: String? = nil, provider: String = ["gmail.com", "yahoo.com", "hotmail.com"].randomElement()!) -> String {
         return self.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider
     }
@@ -100,15 +99,14 @@ public extension Phony {
             } else {
                 mac += hexa(2).lowercased() + ":"
             }
-            
         }
         return mac
     }
-    
+
     func website() -> String {
         self.definitions.websites.randomElement()!
     }
-    
+
     func website() -> URL {
         URL(string: self.definitions.websites.randomElement()!)!
     }

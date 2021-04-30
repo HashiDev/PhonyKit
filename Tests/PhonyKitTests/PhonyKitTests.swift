@@ -1,5 +1,5 @@
-import XCTest
 @testable import PhonyKit
+import XCTest
 
 final class PhonyKitTests: XCTestCase {
     func testExample() {
@@ -28,6 +28,6 @@ final class PhonyKitTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 }
