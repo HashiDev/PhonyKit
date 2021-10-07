@@ -4,7 +4,7 @@ import Foundation
 
 public extension Phony {
     func email(firstName: String? = nil, lastName: String? = nil, provider: String = ["gmail.com", "yahoo.com", "hotmail.com"].randomElement()!) -> String {
-        return self.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider
+        self.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider
     }
 
     func exampleEmail(firstName: String? = nil, lastName: String? = nil) -> String {
@@ -30,15 +30,15 @@ public extension Phony {
     }
 
     func `protocol`() -> String {
-        return ["http", "https"].randomElement()!
+        ["http", "https"].randomElement()!
     }
 
     func url() -> String {
-        return self.protocol() + "://" + self.domainName()
+        self.protocol() + "://" + self.domainName()
     }
 
     func domainName() -> String {
-        return self.domainWord() + "." + self.domainSuffix()
+        self.domainWord() + "." + self.domainSuffix()
     }
 
     func domainSuffix() -> String {
@@ -61,7 +61,7 @@ public extension Phony {
     }
 
     func ipAddress() -> String {
-        return "\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255))"
+        "\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255))"
     }
 
     func ipv6() -> String {
