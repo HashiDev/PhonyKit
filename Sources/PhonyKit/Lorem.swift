@@ -2,71 +2,101 @@
 // Lorem
 
 public extension Phony {
+    @available(*, deprecated, message: "Use 'loremWord()' instead.")
     func word() -> String {
-        return self.definitions.lorem.randomElement()!
+        self.loremWord()
     }
 
+    func loremWord() -> String {
+        self.definitions.lorem.randomElement()!
+    }
+
+    @available(*, deprecated, message: "Use 'loremWords()' instead.")
     func words(_ num: Int = 3, _ separator: String = " ") -> String {
-        var words = ""
-        for _ in 1...num {
-            words += "\(self.word())\(separator)"
-        }
-        return words.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.loremWords(num, separator)
     }
 
+    func loremWords(_ num: Int = 3, _ separator: String = " ") -> String {
+        (1...num).map { _ in self.loremWord() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    @available(*, deprecated, message: "Use 'loremSentence()' instead.")
     func sentence() -> String {
         let sentence = self.words(Int.random(in: 3...10))
         return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
     }
+    
+    func loremSentence() -> String {
+        let sentence = self.loremWords(Int.random(in: 3...10))
+        return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
+    }
 
+    @available(*, deprecated, message: "Use 'loremSlug()' instead.")
     func slug(wordCount: Int = 3) -> String {
-        return self.slugify(str: self.words(wordCount))
+        self.loremSlug(wordCount: wordCount)
     }
 
+    func loremSlug(wordCount: Int = 3) -> String {
+        self.slugify(str: self.loremWords(wordCount))
+    }
+
+    @available(*, deprecated, message: "Use 'loremSentences()' instead.")
     func sentences(_ sentenceCount: Int = Int.random(in: 2...6), _ separator: String = " ") -> String {
-        var sentences = ""
-
-        for _ in 1...sentenceCount {
-            sentences += "\(self.sentence())\(separator)"
-        }
-
-        return sentences.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.loremSentences(sentenceCount, separator)
     }
 
+    func loremSentences(_ sentenceCount: Int = Int.random(in: 2...6), _ separator: String = " ") -> String {
+        (1...sentenceCount).map { _ in self.loremSentence() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    @available(*, deprecated, message: "Use 'loremParagraph()' instead.")
     func paragraph(_ sentenceCount: Int = 3, _ separator: String = " ") -> String {
-        return self.sentences(sentenceCount, separator)
+        self.loremParagraph(sentenceCount, separator)
     }
 
+    func loremParagraph(_ sentenceCount: Int = 3, _ separator: String = " ") -> String {
+        self.loremSentences(sentenceCount, separator)
+    }
+
+    @available(*, deprecated, message: "Use 'loremParagraphs()' instead.")
     func paragraphs(_ paragraphCount: Int = 3, _ separator: String = "\n \r") -> String {
-        var paragraphs = ""
-
-        for _ in 1...paragraphCount {
-            paragraphs += "\(self.paragraph())\(separator)"
-        }
-
-        return paragraphs.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.loremParagraphs(paragraphCount, separator)
     }
 
+    func loremParagraphs(_ paragraphCount: Int = 3, _ separator: String = "\n \r") -> String {
+        (1...paragraphCount).map { _ in self.loremParagraph() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    @available(*, deprecated, message: "Use 'loremText()' instead.")
     func text() -> String {
+        self.loremText()
+    }
+
+    func loremText() -> String {
         switch Int.random(in: 0...6) {
         case 0:
-            return self.word()
+            return self.loremWord()
         case 1:
-            return self.words()
+            return self.loremWords()
         case 2:
-            return self.sentence()
+            return self.loremSentence()
         case 3:
-            return self.sentences()
+            return self.loremSentences()
         case 4:
-            return self.paragraph()
+            return self.loremParagraph()
         case 5:
-            return self.paragraphs()
+            return self.loremParagraphs()
         default:
-            return self.lines()
+            return self.loremLines()
         }
     }
 
+    @available(*, deprecated, message: "Use 'loremLines()' instead.")
     func lines(_ lineCount: Int = Int.random(in: 1...5), _ separator: String = "\n") -> String {
-        return self.sentences(lineCount, separator)
+        self.loremLines(lineCount, separator)
+    }
+
+    func loremLines(_ lineCount: Int = Int.random(in: 1...5), _ separator: String = "\n") -> String {
+        self.loremSentences(lineCount, separator)
     }
 }
