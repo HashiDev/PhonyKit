@@ -79,11 +79,7 @@ public extension Phony {
     }
 
     func alphaNumeric(count: Int = 5) -> String {
-        var wholeString = ""
-        for _ in 1...count {
-            wholeString += Bool.random() ? String.random(in: "0"..."9") : String.random(in: "a"..."z")
-        }
-        return wholeString
+        (1...count).map { _ in Bool.random() ? String.random(in: "0"..."9") : String.random(in: "a"..."z") }.joined(separator: "")
     }
 
     func hexaDecimal(count: Int = 6) -> String {
