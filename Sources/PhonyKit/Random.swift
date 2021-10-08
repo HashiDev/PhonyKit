@@ -43,15 +43,15 @@ public extension Phony {
         case 15:
             return self.state()
         case 16:
-            return self.noun()
+            return self.hackerNoun()
         case 17:
-            return self.verb()
+            return self.hackerVerb()
         case 18:
-            return self.adjective()
+            return self.hackerAdjective()
         case 19:
-            return self.ingverb()
+            return self.hackerIngVerb()
         case 20:
-            return self.abbreviation()
+            return self.hackerAbbreviation()
         case 21:
             return self.jobDescriptor()
         case 22:

@@ -54,9 +54,9 @@ public extension Phony {
 
     func domainWord() -> String {
         if Bool.random() {
-            return (self.word() + self.word()).lowercased()
+            return (self.loremWord() + self.loremWord()).lowercased()
         } else {
-            return self.slug(wordCount: 2).lowercased()
+            return self.loremSlug(wordCount: 2).lowercased()
         }
     }
 
