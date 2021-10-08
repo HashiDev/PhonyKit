@@ -61,9 +61,8 @@ public extension Phony {
         }
     }
 
-    @available(*, deprecated, message: "The same as 'loremWords()'")
     func realWords(toReturn count: Int = Int.random(in: 1...3)) -> String {
-        self.loremWords(count)
+        (1...count).map { _ in self.realWord() }.joined(separator: "")
     }
 
     func alpha(count: Int = 5, upperCased: Bool = false) -> String {
