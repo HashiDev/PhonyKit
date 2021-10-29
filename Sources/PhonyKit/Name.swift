@@ -11,7 +11,7 @@ public extension Phony {
     /// - Parameter gender: Optional gender
     /// - Returns: a gender-based first name
     func firstName(for gender: Gender? = nil) -> String {
-        let gender = gender ?? [Gender.female, Gender.male].randomElement()!
+        let gender = gender ?? self.gender()
         switch gender {
         case .male:
             return self.definitions.maleFirstName.randomElement()!
@@ -25,6 +25,15 @@ public extension Phony {
     /// - Returns: a gender-based first name
     func lastName() -> String {
         self.definitions.lastName.randomElement()!
+    }
+
+    /// Creates a gendered full name
+    ///
+    /// - Parameter gender: Optional gender
+    /// - Returns: a gender-based full name
+    func fullName(for gender: Gender? = nil) -> String {
+        let gender = gender ?? self.gender()
+        return "\(self.firstName(for: gender)) \(self.lastName())"
     }
 
     /// Function that returns a full name
