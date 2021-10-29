@@ -70,9 +70,22 @@ public extension Phony {
     }
 
     func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> String {
-        let red = (Int.random(in: 0...256) + baseRed255) / 2
-        let green = (Int.random(in: 0...256) + baseGreen255) / 2
-        let blue = (Int.random(in: 0...256) + baseBlue255) / 2
+        var baseRed = baseRed255
+        if abs(baseRed255) > 255 {
+            baseRed = 0
+        }
+        var baseGreen = baseGreen255
+        if abs(baseGreen255) > 255 {
+            baseGreen = 0
+        }
+        var baseBlue = baseBlue255
+        if abs(baseBlue255) > 255 {
+            baseBlue = 0
+        }
+
+        let red = (Int.random(in: 0...255) + baseRed) / 2
+        let green = (Int.random(in: 0...255) + baseGreen) / 2
+        let blue = (Int.random(in: 0...255) + baseBlue) / 2
         var redStr = String(format: "%02X", red)
         var greenStr = String(format: "%02X", green)
         var blueStr = String(format: "%02X", blue)
