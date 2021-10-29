@@ -21,7 +21,7 @@ public extension Phony {
         case 4:
             return self.product()
         case 5:
-            return self.color()
+            return self.productColor()
         case 6:
             return self.catchPhraseAdjective()
         case 7:
