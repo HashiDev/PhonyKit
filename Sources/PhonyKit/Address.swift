@@ -79,9 +79,6 @@ public extension Phony {
     }
 
     func direction(useAbbreviation: Bool = false) -> String {
-        if useAbbreviation {
-            return self.definitions.direction.randomElement()!
-        }
-        return self.definitions.directionAbbr.randomElement()!
+        useAbbreviation ? self.definitions.direction.randomElement()! : self.definitions.directionAbbr.randomElement()!
     }
 }
