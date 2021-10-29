@@ -2,7 +2,7 @@
 // Hacker
 
 public extension Phony {
-    @available(*, deprecated, message: "Use 'hackerAbbreviation()' instead.")
+    @available(*, deprecated, message: "Use 'hackerAbbreviation()' instead. Will be removed in v3.0.0.")
     func abbreviation() -> String {
         self.hackerAbbreviation()
     }
@@ -11,7 +11,7 @@ public extension Phony {
         self.definitions.hackerAbbreviation.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerAdjective()' instead.")
+    @available(*, deprecated, message: "Use 'hackerAdjective()' instead. Will be removed in v3.0.0.")
     func adjective() -> String {
         self.hackerAdjective()
     }
@@ -20,7 +20,7 @@ public extension Phony {
         self.definitions.hackerAdjective.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerNoun()' instead.")
+    @available(*, deprecated, message: "Use 'hackerNoun()' instead. Will be removed in v3.0.0.")
     func noun() -> String {
         self.hackerNoun()
     }
@@ -29,7 +29,7 @@ public extension Phony {
         self.definitions.hackerNoun.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerVerb()' instead.")
+    @available(*, deprecated, message: "Use 'hackerVerb()' instead. Will be removed in v3.0.0.")
     func verb() -> String {
          self.hackerVerb()
     }
@@ -38,7 +38,7 @@ public extension Phony {
          self.definitions.hackerVerb.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerIngVerb()' instead.")
+    @available(*, deprecated, message: "Use 'hackerIngVerb()' instead. Will be removed in v3.0.0.")
     func ingverb() -> String {
         self.hackerIngVerb()
     }
@@ -47,7 +47,7 @@ public extension Phony {
         self.definitions.hackerIngVerb.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerPhrase()' instead.")
+    @available(*, deprecated, message: "Use 'hackerPhrase()' instead. Will be removed in v3.0.0.")
     func phrase() -> String {
         self.hackerPhrase()
     }

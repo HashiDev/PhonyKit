@@ -2,7 +2,7 @@
 // Lorem
 
 public extension Phony {
-    @available(*, deprecated, message: "Use 'loremWord()' instead.")
+    @available(*, deprecated, message: "Use 'loremWord()' instead. Will be removed in v3.0.0.")
     func word() -> String {
         self.loremWord()
     }
@@ -11,7 +11,7 @@ public extension Phony {
         self.definitions.lorem.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'loremWords()' instead.")
+    @available(*, deprecated, message: "Use 'loremWords()' instead. Will be removed in v3.0.0.")
     func words(_ num: Int = 3, _ separator: String = " ") -> String {
         self.loremWords(num, separator)
     }
@@ -20,7 +20,7 @@ public extension Phony {
         (1...num).map { _ in self.loremWord() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    @available(*, deprecated, message: "Use 'loremSentence()' instead.")
+    @available(*, deprecated, message: "Use 'loremSentence()' instead. Will be removed in v3.0.0.")
     func sentence() -> String {
         let sentence = self.words(Int.random(in: 3...10))
         return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
@@ -31,7 +31,7 @@ public extension Phony {
         return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
     }
 
-    @available(*, deprecated, message: "Use 'loremSlug()' instead.")
+    @available(*, deprecated, message: "Use 'loremSlug()' instead. Will be removed in v3.0.0.")
     func slug(wordCount: Int = 3) -> String {
         self.loremSlug(wordCount: wordCount)
     }
@@ -40,7 +40,7 @@ public extension Phony {
         self.slugify(str: self.loremWords(wordCount))
     }
 
-    @available(*, deprecated, message: "Use 'loremSentences()' instead.")
+    @available(*, deprecated, message: "Use 'loremSentences()' instead. Will be removed in v3.0.0.")
     func sentences(_ sentenceCount: Int = Int.random(in: 2...6), _ separator: String = " ") -> String {
         self.loremSentences(sentenceCount, separator)
     }
@@ -49,7 +49,7 @@ public extension Phony {
         (1...sentenceCount).map { _ in self.loremSentence() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    @available(*, deprecated, message: "Use 'loremParagraph()' instead.")
+    @available(*, deprecated, message: "Use 'loremParagraph()' instead. Will be removed in v3.0.0.")
     func paragraph(_ sentenceCount: Int = 3, _ separator: String = " ") -> String {
         self.loremParagraph(sentenceCount, separator)
     }
@@ -58,7 +58,7 @@ public extension Phony {
         self.loremSentences(sentenceCount, separator)
     }
 
-    @available(*, deprecated, message: "Use 'loremParagraphs()' instead.")
+    @available(*, deprecated, message: "Use 'loremParagraphs()' instead. Will be removed in v3.0.0.")
     func paragraphs(_ paragraphCount: Int = 3, _ separator: String = "\n \r") -> String {
         self.loremParagraphs(paragraphCount, separator)
     }
@@ -67,7 +67,7 @@ public extension Phony {
         (1...paragraphCount).map { _ in self.loremParagraph() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    @available(*, deprecated, message: "Use 'loremText()' instead.")
+    @available(*, deprecated, message: "Use 'loremText()' instead. Will be removed in v3.0.0.")
     func text() -> String {
         self.loremText()
     }
@@ -91,7 +91,7 @@ public extension Phony {
         }
     }
 
-    @available(*, deprecated, message: "Use 'loremLines()' instead.")
+    @available(*, deprecated, message: "Use 'loremLines()' instead. Will be removed in v3.0.0.")
     func lines(_ lineCount: Int = Int.random(in: 1...5), _ separator: String = "\n") -> String {
         self.loremLines(lineCount, separator)
     }
