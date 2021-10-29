@@ -47,35 +47,35 @@ public extension Phony {
     }
 
     func streetSuffix() -> String {
-        return self.definitions.streetSuffix.randomElement()!
+        self.definitions.streetSuffix.randomElement()!
     }
 
     func streetPrefix() -> String {
-        return self.definitions.streetPrefix.randomElement()!
+        self.definitions.streetPrefix.randomElement()!
     }
 
     func secondaryAddress() -> String {
-        return self.replaceSymbolWithNumber(string: ["Apt. ###", "Suite ###"].randomElement()!)
+        self.replaceSymbolWithNumber(string: ["Apt. ###", "Suite ###"].randomElement()!)
     }
 
     func county() -> String {
-        return self.definitions.county.randomElement()!
+        self.definitions.county.randomElement()!
     }
 
     func country() -> String {
-        return self.definitions.country.randomElement()!
+        self.definitions.country.randomElement()!
     }
 
     func countryCode() -> String {
-        return self.definitions.countryCode.randomElement()!
+        self.definitions.countryCode.randomElement()!
     }
 
     func state() -> String {
-        return self.definitions.state.randomElement()!
+        self.definitions.state.randomElement()!
     }
 
     func stateAbbr() -> String {
-        return self.definitions.stateAbbr.randomElement()!
+        self.definitions.stateAbbr.randomElement()!
     }
 
     func direction(useAbbreviation: Bool = false) -> String {

@@ -39,11 +39,11 @@ public extension Phony {
     }
 
     func url() -> String {
-        self.protocol() + "://" + self.domainName()
+        "\(self.protocol())://\(self.domainName())"
     }
 
     func domainName() -> String {
-        self.domainWord() + "." + self.domainSuffix()
+        "\(self.domainWord()).\(self.domainSuffix())"
     }
 
     func domainSuffix() -> String {

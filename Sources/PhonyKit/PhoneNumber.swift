@@ -6,10 +6,10 @@ public extension Phony {
     }
 
     func phoneNumber(index: Int = 0) -> String {
-        return self.phoneNumber(format: self.definitions.phoneNumberFormats[index])
+        self.phoneNumber(format: self.definitions.phoneNumberFormats[index])
     }
 
     func phoneFormat() -> String {
-        return self.definitions.phoneNumberFormats.randomElement()!
+        self.definitions.phoneNumberFormats.randomElement()!
     }
 }

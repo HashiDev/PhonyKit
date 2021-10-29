@@ -22,11 +22,11 @@ public extension Phony {
     }
 
     func avatar() -> String {
-        return self.definitions.avatarUri.randomElement()!
+        self.definitions.avatarUri.randomElement()!
     }
 
     func avatar() -> URL {
-        return URL(string: self.avatar())!
+        URL(string: self.avatar())!
     }
 
     func unsplash(width: Int = .random(in: 100..<3000), height: Int = .random(in: 100..<3000), category: UnsplashCategory = UnsplashCategory.allCases.randomElement()!, keyword: String? = nil) -> String {
@@ -40,15 +40,15 @@ public extension Phony {
     }
 
     func unsplash(width: Int = .random(in: 100..<3000), height: Int = .random(in: 100..<3000), category: UnsplashCategory = UnsplashCategory.allCases.randomElement()!, keyword: String? = nil) -> URL {
-        return URL(string: self.unsplash(width: width, height: height, category: category, keyword: keyword))!
+        URL(string: self.unsplash(width: width, height: height, category: category, keyword: keyword))!
     }
 
     func picsum(seed: String = UUID().uuidString, width: Int = .random(in: 100..<3000), height: Int = .random(in: 100..<3000)) -> String {
-        return "https://picsum.photos/seed/\(seed)/\(width)/\(height)"
+        "https://picsum.photos/seed/\(seed)/\(width)/\(height)"
     }
 
     func picsum(seed: String = UUID().uuidString, width: Int = .random(in: 100..<3000), height: Int = .random(in: 100..<3000)) -> URL {
-        return URL(string: self.picsum(seed: seed, width: width, height: height))!
+        URL(string: self.picsum(seed: seed, width: width, height: height))!
     }
 
     func dataUri(width: Int = .random(in: 100..<3000), height: Int = .random(in: 100..<3000), color: String = "grey") -> String {
