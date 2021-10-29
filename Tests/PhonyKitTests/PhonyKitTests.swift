@@ -9,7 +9,7 @@ final class PhonyKitTests: XCTestCase {
         let phony = Phony.default
         print(phony.avatar() as String)
         print(phony.color())
-        print(phony.color(baseRed255: 100, baseGreen255: 100, baseBlue255: 100))
+        print(phony.color(baseRed255: 100, baseGreen255: 100, baseBlue255: 100) as String)
         print(phony.domainName())
         print(phony.domainSuffix())
         print(phony.domainWord())

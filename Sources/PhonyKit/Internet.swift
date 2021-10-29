@@ -1,5 +1,10 @@
 import Foundation
-
+#if canImport(SwiftUI)
+    import SwiftUI
+#endif
+#if canImport(UIKit)
+    import UIKit
+#endif
 // Internet
 
 public extension Phony {
@@ -100,6 +105,45 @@ public extension Phony {
             blueStr = "0" + blueStr
         }
         return "#\(redStr)\(greenStr)\(blueStr)"
+    }
+
+    #if canImport(UIKit)
+        func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> UIColor {
+            let color: ColorFloats = self.color()
+            return UIColor(red: color.red, green: color.green, blue: color.blue, alpha: 1.0)
+        }
+    #endif
+
+    #if canImport(SwiftUI)
+        func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> Color {
+            let color: ColorFloats = self.color()
+            return Color(red: color.red, green: color.green, blue: color.blue, opacity: 1.0)
+        }
+    #endif
+
+    private func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> ColorFloats {
+        var baseRed = baseRed255
+        if abs(baseRed255) > 255 {
+            baseRed = 0
+        }
+        var baseGreen = baseGreen255
+        if abs(baseGreen255) > 255 {
+            baseGreen = 0
+        }
+        var baseBlue = baseBlue255
+        if abs(baseBlue255) > 255 {
+            baseBlue = 0
+        }
+        let red = CGFloat((Int.random(in: 0...255) + baseRed) / 2) / 255.0
+        let green = CGFloat((Int.random(in: 0...255) + baseGreen) / 2) / 255.0
+        let blue = CGFloat((Int.random(in: 0...255) + baseBlue) / 2) / 255.0
+        return ColorFloats(red: red, green: green, blue: blue)
+    }
+
+    private struct ColorFloats {
+        let red: CGFloat
+        let green: CGFloat
+        let blue: CGFloat
     }
 
     func macAddress() -> String {
