@@ -38,12 +38,6 @@ public extension Phony {
     }
 
     func repeatString(string: String, num: Int) -> String {
-        var text = ""
-
-        for _ in 0...num {
-            text += string
-        }
-
-        return text
+        (0...num).reduce("") { partialResult, _ in "\(partialResult)\(string)" }
     }
 }

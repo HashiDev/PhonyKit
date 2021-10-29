@@ -58,11 +58,7 @@ public extension Phony {
     }
 
     func domainWord() -> String {
-        if Bool.random() {
-            return (self.loremWord() + self.loremWord()).lowercased()
-        } else {
-            return self.loremSlug(wordCount: 2).lowercased()
-        }
+        Bool.random() ? (self.loremWord() + self.loremWord()).lowercased() : self.loremSlug(wordCount: 2).lowercased()
     }
 
     func ipAddress() -> String {
@@ -70,8 +66,7 @@ public extension Phony {
     }
 
     func ipv6() -> String {
-        let hexa = self.hexaDecimal
-        return "\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4))"
+        "\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4))"
     }
 
     func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> String {
@@ -147,17 +142,9 @@ public extension Phony {
     }
 
     func macAddress() -> String {
-        let hexa = self.hexaDecimal
-        var mac = ""
-
-        for i in 0..<12 {
-            if i == 11 {
-                mac += hexa(2).lowercased()
-            } else {
-                mac += hexa(2).lowercased() + ":"
-            }
+        (0...5).reduce("") { partialResult, index in
+            "\(partialResult)\(hexaDecimal(count: 2).lowercased())\(index == 5 ? "" : ":")"
         }
-        return mac
     }
 
     func website() -> String {

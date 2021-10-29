@@ -9,9 +9,7 @@ public extension Phony {
     }
 
     func city() -> String {
-        let format = Int.random(in: 0...3)
-
-        switch format {
+        switch Int.random(in: 0...3) {
         case 0:
             return "\(self.cityPrefix()) \(self.firstName(for: nil)) \(self.citySuffix())"
         case 1:
@@ -41,12 +39,7 @@ public extension Phony {
     }
 
     func streetAddress(useFullAddress: Bool = false) -> String {
-        let symbols = Int.random(in: 3...5)
-        var string = ""
-
-        for _ in 1...symbols {
-            string += "#"
-        }
+        let string = (1...Int.random(in: 3...5)).reduce("") { partialResult, _ in "\(partialResult)#" }
 
         let address = "\(self.replaceSymbolWithNumber(string: string)) \(self.streetName())"
 

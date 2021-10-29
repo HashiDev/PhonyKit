@@ -66,14 +66,10 @@ public extension Phony {
     }
 
     func alpha(count: Int = 5, upperCased: Bool = false) -> String {
-        var wholeString = ""
-        for _ in 1...count {
-            wholeString += String.random(in: "a"..."z")
-        }
+        let wholeString = (1...count).reduce("") { partialResult, _ in "\(partialResult)\(String.random(in: "a"..."z"))" }
         if upperCased {
             return wholeString.uppercased()
         }
-
         return wholeString
     }
 

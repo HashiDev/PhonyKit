@@ -14,17 +14,11 @@ public extension Phony {
     }
 
     func image(width: Int = .random(in: 100..<3000), height: Int = .random(in: 100..<3000)) -> String {
-        if Bool.random() {
-            return self.unsplash(keyword: nil)
-        }
-        return self.picsum()
+        Bool.random() ? self.unsplash(width: width, height: height, keyword: nil) : self.picsum(width: width, height: height)
     }
 
     func image(width: Int = .random(in: 100..<3000), height: Int = .random(in: 100..<3000)) -> URL {
-        if Bool.random() {
-            return self.unsplash(keyword: nil)
-        }
-        return self.picsum()
+        Bool.random() ? self.unsplash(width: width, height: height, keyword: nil) : self.picsum(width: width, height: height)
     }
 
     func avatar() -> String {
