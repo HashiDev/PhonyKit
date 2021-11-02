@@ -1,10 +1,15 @@
 import Foundation
-
+#if canImport(SwiftUI)
+    import SwiftUI
+#endif
+#if canImport(UIKit)
+    import UIKit
+#endif
 // Internet
 
 public extension Phony {
     func email(firstName: String? = nil, lastName: String? = nil, provider: String = ["gmail.com", "yahoo.com", "hotmail.com"].randomElement()!) -> String {
-        return self.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider
+        self.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider
     }
 
     func exampleEmail(firstName: String? = nil, lastName: String? = nil) -> String {
@@ -30,15 +35,15 @@ public extension Phony {
     }
 
     func `protocol`() -> String {
-        return ["http", "https"].randomElement()!
+        ["http", "https"].randomElement()!
     }
 
     func url() -> String {
-        return self.protocol() + "://" + self.domainName()
+        "\(self.protocol())://\(self.domainName())"
     }
 
     func domainName() -> String {
-        return self.domainWord() + "." + self.domainSuffix()
+        "\(self.domainWord()).\(self.domainSuffix())"
     }
 
     func domainSuffix() -> String {
@@ -53,26 +58,34 @@ public extension Phony {
     }
 
     func domainWord() -> String {
-        if Bool.random() {
-            return (self.word() + self.word()).lowercased()
-        } else {
-            return self.slug(wordCount: 2).lowercased()
-        }
+        Bool.random() ? (self.loremWord() + self.loremWord()).lowercased() : self.loremSlug(wordCount: 2).lowercased()
     }
 
     func ipAddress() -> String {
-        return "\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255))"
+        "\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255)).\(Int.random(in: 0...255))"
     }
 
     func ipv6() -> String {
-        let hexa = self.hexaDecimal
-        return "\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4)):\(hexa(4))"
+        "\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4)):\(self.hexaDecimal(count: 4))"
     }
 
     func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> String {
-        let red = (Int.random(in: 0...256) + baseRed255) / 2
-        let green = (Int.random(in: 0...256) + baseGreen255) / 2
-        let blue = (Int.random(in: 0...256) + baseBlue255) / 2
+        var baseRed = baseRed255
+        if abs(baseRed255) > 255 {
+            baseRed = 0
+        }
+        var baseGreen = baseGreen255
+        if abs(baseGreen255) > 255 {
+            baseGreen = 0
+        }
+        var baseBlue = baseBlue255
+        if abs(baseBlue255) > 255 {
+            baseBlue = 0
+        }
+
+        let red = (Int.random(in: 0...255) + baseRed) / 2
+        let green = (Int.random(in: 0...255) + baseGreen) / 2
+        let blue = (Int.random(in: 0...255) + baseBlue) / 2
         var redStr = String(format: "%02X", red)
         var greenStr = String(format: "%02X", green)
         var blueStr = String(format: "%02X", blue)
@@ -89,18 +102,45 @@ public extension Phony {
         return "#\(redStr)\(greenStr)\(blueStr)"
     }
 
-    func macAddress() -> String {
-        let hexa = self.hexaDecimal
-        var mac = ""
-
-        for i in 0..<12 {
-            if i == 11 {
-                mac += hexa(2).lowercased()
-            } else {
-                mac += hexa(2).lowercased() + ":"
-            }
+    #if canImport(UIKit)
+    func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0, alpha: Double = 1.0) -> UIColor {
+            let color: ColorDoubles = self.color(redOffset: redOffset, greenOffset: greenOffset, blueOffset: blueOffset)
+            return UIColor(red: color.red, green: color.green, blue: color.blue, alpha: alpha)
         }
-        return mac
+    #endif
+
+    #if canImport(SwiftUI)
+    @available(iOS 13.0, *)
+    @available(macOS 10.15, *)
+    func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0, alpha: Double = 1.0) -> Color {
+            let color: ColorDoubles = self.color(redOffset: redOffset, greenOffset: greenOffset, blueOffset: blueOffset)
+            return Color(red: color.red, green: color.green, blue: color.blue, opacity: alpha)
+        }
+    #endif
+
+    private func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0) -> ColorDoubles {
+        var baseRed = redOffset
+        if abs(redOffset) > 255 {
+            baseRed = 0
+        }
+        var baseGreen = greenOffset
+        if abs(greenOffset) > 255 {
+            baseGreen = 0
+        }
+        var baseBlue = blueOffset
+        if abs(blueOffset) > 255 {
+            baseBlue = 0
+        }
+        let red = CGFloat((Int.random(in: 0...255) + baseRed) / 2) / 255.0
+        let green = CGFloat((Int.random(in: 0...255) + baseGreen) / 2) / 255.0
+        let blue = CGFloat((Int.random(in: 0...255) + baseBlue) / 2) / 255.0
+        return ColorDoubles(red: red, green: green, blue: blue)
+    }
+
+    func macAddress() -> String {
+        (0...5).reduce("") { partialResult, index in
+            "\(partialResult)\(hexaDecimal(count: 2).lowercased())\(index == 5 ? "" : ":")"
+        }
     }
 
     func website() -> String {
@@ -110,4 +150,10 @@ public extension Phony {
     func website() -> URL {
         URL(string: self.definitions.websites.randomElement()!)!
     }
+}
+
+private struct ColorDoubles {
+    let red: Double
+    let green: Double
+    let blue: Double
 }

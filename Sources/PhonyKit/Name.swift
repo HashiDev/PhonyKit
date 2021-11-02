@@ -24,7 +24,7 @@ public extension Phony {
     ///
     /// - Returns: a gender-based first name
     func lastName() -> String {
-        return self.definitions.lastName.randomElement()!
+        self.definitions.lastName.randomElement()!
     }
 
     /// Creates a gendered full name
@@ -59,11 +59,11 @@ public extension Phony {
     }
 
     func jobTitle() -> String {
-        return "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
+        "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
     }
 
     func gender() -> Gender {
-        return [Gender.male, Gender.female].randomElement()!
+        [Gender.male, Gender.female].randomElement()!
     }
 
     func prefix(for gender: Gender = .male) -> String {
@@ -85,18 +85,18 @@ public extension Phony {
     }
 
     func title() -> String {
-        return "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
+        "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
     }
 
     func jobDescriptor() -> String {
-        return self.definitions.titleDecriptor.randomElement()!
+        self.definitions.titleDecriptor.randomElement()!
     }
 
     func jobArea() -> String {
-        return self.definitions.titleLevel.randomElement()!
+        self.definitions.titleLevel.randomElement()!
     }
 
     func jobType() -> String {
-        return self.definitions.titleJob.randomElement()!
+        self.definitions.titleJob.randomElement()!
     }
 }

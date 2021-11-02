@@ -21,7 +21,7 @@ public extension Phony {
         case 4:
             return self.product()
         case 5:
-            return self.color()
+            return self.productColor()
         case 6:
             return self.catchPhraseAdjective()
         case 7:
@@ -43,15 +43,15 @@ public extension Phony {
         case 15:
             return self.state()
         case 16:
-            return self.noun()
+            return self.hackerNoun()
         case 17:
-            return self.verb()
+            return self.hackerVerb()
         case 18:
-            return self.adjective()
+            return self.hackerAdjective()
         case 19:
-            return self.ingverb()
+            return self.hackerIngVerb()
         case 20:
-            return self.abbreviation()
+            return self.hackerAbbreviation()
         case 21:
             return self.jobDescriptor()
         case 22:
@@ -62,32 +62,19 @@ public extension Phony {
     }
 
     func realWords(toReturn count: Int = Int.random(in: 1...3)) -> String {
-        var words = ""
-        for _ in 1...count {
-            words += "\(self.word()) "
-        }
-
-        return words.trimmingCharacters(in: .whitespaces)
+        (1...count).map { _ in self.realWord() }.joined(separator: "")
     }
 
     func alpha(count: Int = 5, upperCased: Bool = false) -> String {
-        var wholeString = ""
-        for _ in 1...count {
-            wholeString += String.random(in: "a"..."z")
-        }
+        let wholeString = (1...count).reduce("") { partialResult, _ in "\(partialResult)\(String.random(in: "a"..."z"))" }
         if upperCased {
             return wholeString.uppercased()
         }
-
         return wholeString
     }
 
     func alphaNumeric(count: Int = 5) -> String {
-        var wholeString = ""
-        for _ in 1...count {
-            wholeString += Bool.random() ? String.random(in: "0"..."9") : String.random(in: "a"..."z")
-        }
-        return wholeString
+        (1...count).map { _ in Bool.random() ? String.random(in: "0"..."9") : String.random(in: "a"..."z") }.joined(separator: "")
     }
 
     func hexaDecimal(count: Int = 6) -> String {

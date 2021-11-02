@@ -2,32 +2,62 @@
 // Hacker
 
 public extension Phony {
+    @available(*, deprecated, message: "Use 'hackerAbbreviation()' instead. Will be removed in v3.0.0.")
     func abbreviation() -> String {
-        return self.definitions.hackerAbbreviation.randomElement()!
+        self.hackerAbbreviation()
+    }
+    
+    func hackerAbbreviation() -> String {
+        self.definitions.hackerAbbreviation.randomElement()!
     }
 
+    @available(*, deprecated, message: "Use 'hackerAdjective()' instead. Will be removed in v3.0.0.")
     func adjective() -> String {
-        return self.definitions.hackerAdjective.randomElement()!
+        self.hackerAdjective()
+    }
+    
+    func hackerAdjective() -> String {
+        self.definitions.hackerAdjective.randomElement()!
     }
 
+    @available(*, deprecated, message: "Use 'hackerNoun()' instead. Will be removed in v3.0.0.")
     func noun() -> String {
-        return self.definitions.hackerNoun.randomElement()!
+        self.hackerNoun()
+    }
+    
+    func hackerNoun() -> String {
+        self.definitions.hackerNoun.randomElement()!
     }
 
+    @available(*, deprecated, message: "Use 'hackerVerb()' instead. Will be removed in v3.0.0.")
     func verb() -> String {
-        return self.definitions.hackerVerb.randomElement()!
+         self.hackerVerb()
     }
 
+    func hackerVerb() -> String {
+         self.definitions.hackerVerb.randomElement()!
+    }
+
+    @available(*, deprecated, message: "Use 'hackerIngVerb()' instead. Will be removed in v3.0.0.")
     func ingverb() -> String {
-        return self.definitions.hackerIngVerb.randomElement()!
+        self.hackerIngVerb()
     }
 
+    func hackerIngVerb() -> String {
+        self.definitions.hackerIngVerb.randomElement()!
+    }
+
+    @available(*, deprecated, message: "Use 'hackerPhrase()' instead. Will be removed in v3.0.0.")
     func phrase() -> String {
-        let abbreviation = self.abbreviation()
-        let adjective = self.adjective()
-        let ingverb = self.ingverb()
-        let noun = self.noun()
-        let verb = self.verb()
+        self.hackerPhrase()
+    }
+
+    func hackerPhrase() -> String {
+        let abbreviation = self.hackerAbbreviation()
+        let adjective = self.hackerAdjective()
+        let ingverb = self.hackerIngVerb()
+        let noun = self.hackerNoun()
+        let verb = self.hackerVerb()
 
         let phrases = [
             "If we \(verb) the \(noun), we can get to the \(abbreviation) \(noun) through the \(adjective) \(abbreviation) \(noun)!",

@@ -2,15 +2,15 @@
 
 public extension Phony {
     func slugify(str: String) -> String {
-        return str.replacingOccurrences(of: " ", with: "-").trimmingCharacters(in: .whitespacesAndNewlines)
+        str.replacingOccurrences(of: " ", with: "-").trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     func snakify(str: String) -> String {
-        return str.uppercased().replacingOccurrences(of: " ", with: "_").trimmingCharacters(in: .whitespacesAndNewlines)
+        str.uppercased().replacingOccurrences(of: " ", with: "_").trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     func replaceSymbolWithNumber(string: String, symbol: String = "#") -> String {
-        return string.reduce(into: "") { result, char in
+        string.reduce(into: "") { result, char in
             switch char {
             case symbol.first:
                 result += String.random(in: "0"..."9")
@@ -23,7 +23,7 @@ public extension Phony {
     }
 
     func replaceSymbols(string: String) -> String {
-        return string.reduce(into: "") { result, char in
+        string.reduce(into: "") { result, char in
             switch char {
             case "#":
                 result += String.random(in: "0"..."9")
@@ -38,12 +38,6 @@ public extension Phony {
     }
 
     func repeatString(string: String, num: Int) -> String {
-        var text = ""
-
-        for _ in 0...num {
-            text += string
-        }
-
-        return text
+        (0...num).reduce("") { partialResult, _ in "\(partialResult)\(string)" }
     }
 }

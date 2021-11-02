@@ -2,7 +2,7 @@
 
 public extension Phony {
     private func suffixes() -> [String] {
-        return self.definitions.companySuffix
+        self.definitions.companySuffix
     }
 
     func companyName() -> String {
@@ -19,38 +19,38 @@ public extension Phony {
     }
 
     func companySuffix() -> String {
-        return self.suffixes().randomElement()!
+        self.suffixes().randomElement()!
     }
 
     func catchPhrase() -> String {
-        return "\(self.catchPhraseAdjective()) \(self.catchPhraseDescriptor()) \(self.catchPhraseNoun())"
+        "\(self.catchPhraseAdjective()) \(self.catchPhraseDescriptor()) \(self.catchPhraseNoun())"
     }
 
     func bs() -> String {
-        return "\(self.bsBuzz()) \(self.bsAdjective()) \(self.bsNoun())"
+        "\(self.bsBuzz()) \(self.bsAdjective()) \(self.bsNoun())"
     }
 
     func catchPhraseAdjective() -> String {
-        return self.definitions.companyAdjective.randomElement()!
+        self.definitions.companyAdjective.randomElement()!
     }
 
     func catchPhraseDescriptor() -> String {
-        return self.definitions.companyDescriptor.randomElement()!
+        self.definitions.companyDescriptor.randomElement()!
     }
 
     func catchPhraseNoun() -> String {
-        return self.definitions.companyNoun.randomElement()!
+        self.definitions.companyNoun.randomElement()!
     }
 
     func bsAdjective() -> String {
-        return self.definitions.companyBsAdjective.randomElement()!
+        self.definitions.companyBsAdjective.randomElement()!
     }
 
     func bsBuzz() -> String {
-        return self.definitions.companyBsVerb.randomElement()!
+        self.definitions.companyBsVerb.randomElement()!
     }
 
     func bsNoun() -> String {
-        return self.definitions.companyBsNoun.randomElement()!
+        self.definitions.companyBsNoun.randomElement()!
     }
 }
