@@ -103,30 +103,32 @@ public extension Phony {
     }
 
     #if canImport(UIKit)
-        func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> UIColor {
-            let color: ColorFloats = self.color()
-            return UIColor(red: color.red, green: color.green, blue: color.blue, alpha: 1.0)
+    func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0, alpha: Double = 1.0) -> UIColor {
+            let color: ColorDoubles = self.color(redOffset: redOffset, greenOffset: greenOffset, blueOffset: blueOffset)
+            return UIColor(red: color.red, green: color.green, blue: color.blue, alpha: alpha)
         }
     #endif
 
     #if canImport(SwiftUI)
-        func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> Color {
-            let color: ColorFloats = self.color()
-            return Color(red: color.red, green: color.green, blue: color.blue, opacity: 1.0)
+    @available(iOS 13.0, *)
+    @available(macOS 10.15, *)
+    func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0, alpha: Double = 1.0) -> Color {
+            let color: ColorDoubles = self.color(redOffset: redOffset, greenOffset: greenOffset, blueOffset: blueOffset)
+            return Color(red: color.red, green: color.green, blue: color.blue, opacity: alpha)
         }
     #endif
 
-    private func color(baseRed255: Int = 0, baseGreen255: Int = 0, baseBlue255: Int = 0) -> ColorFloats {
-        var baseRed = baseRed255
-        if abs(baseRed255) > 255 {
+    private func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0) -> ColorDoubles {
+        var baseRed = redOffset
+        if abs(redOffset) > 255 {
             baseRed = 0
         }
-        var baseGreen = baseGreen255
-        if abs(baseGreen255) > 255 {
+        var baseGreen = greenOffset
+        if abs(greenOffset) > 255 {
             baseGreen = 0
         }
-        var baseBlue = baseBlue255
-        if abs(baseBlue255) > 255 {
+        var baseBlue = blueOffset
+        if abs(blueOffset) > 255 {
             baseBlue = 0
         }
         let red = CGFloat((Int.random(in: 0...255) + baseRed) / 2) / 255.0
