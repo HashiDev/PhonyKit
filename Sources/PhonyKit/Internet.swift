@@ -132,13 +132,7 @@ public extension Phony {
         let red = CGFloat((Int.random(in: 0...255) + baseRed) / 2) / 255.0
         let green = CGFloat((Int.random(in: 0...255) + baseGreen) / 2) / 255.0
         let blue = CGFloat((Int.random(in: 0...255) + baseBlue) / 2) / 255.0
-        return ColorFloats(red: red, green: green, blue: blue)
-    }
-
-    private struct ColorFloats {
-        let red: CGFloat
-        let green: CGFloat
-        let blue: CGFloat
+        return ColorDoubles(red: red, green: green, blue: blue)
     }
 
     func macAddress() -> String {
@@ -154,4 +148,10 @@ public extension Phony {
     func website() -> URL {
         URL(string: self.definitions.websites.randomElement()!)!
     }
+}
+
+private struct ColorDoubles {
+    let red: Double
+    let green: Double
+    let blue: Double
 }
