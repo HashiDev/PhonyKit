@@ -84,10 +84,6 @@ public extension Phony {
         }
     }
 
-    func title() -> String {
-        "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
-    }
-
     func jobDescriptor() -> String {
         self.definitions.titleDecriptor.randomElement()!
     }
