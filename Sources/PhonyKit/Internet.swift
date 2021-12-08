@@ -1,10 +1,4 @@
 import Foundation
-#if canImport(SwiftUI)
-    import SwiftUI
-#endif
-#if canImport(UIKit)
-    import UIKit
-#endif
 // Internet
 
 public extension Phony {
@@ -115,10 +109,4 @@ public extension Phony {
     func website() -> URL {
         URL(string: self.definitions.websites.randomElement()!)!
     }
-}
-
-private struct ColorDoubles {
-    let red: Double
-    let green: Double
-    let blue: Double
 }
