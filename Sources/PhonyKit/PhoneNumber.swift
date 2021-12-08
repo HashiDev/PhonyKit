@@ -6,7 +6,11 @@ public extension Phony {
     }
 
     func phoneNumber(index: Int = 0) -> String {
-        self.phoneNumber(format: self.definitions.phoneNumberFormats[index])
+        if index > self.definitions.phoneNumberFormats.count {
+            return self.phoneNumber(format: self.definitions.phoneNumberFormats[0])
+        } else {
+            return self.phoneNumber(format: self.definitions.phoneNumberFormats[index])
+        }
     }
 
     func phoneFormat() -> String {
