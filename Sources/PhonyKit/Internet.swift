@@ -102,41 +102,6 @@ public extension Phony {
         return "#\(redStr)\(greenStr)\(blueStr)"
     }
 
-    #if canImport(UIKit)
-    func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0, alpha: Double = 1.0) -> UIColor {
-            let color: ColorDoubles = self.color(redOffset: redOffset, greenOffset: greenOffset, blueOffset: blueOffset)
-            return UIColor(red: color.red, green: color.green, blue: color.blue, alpha: alpha)
-        }
-    #endif
-
-    #if canImport(SwiftUI)
-    @available(iOS 13.0, *)
-    @available(macOS 10.15, *)
-    func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0, alpha: Double = 1.0) -> Color {
-            let color: ColorDoubles = self.color(redOffset: redOffset, greenOffset: greenOffset, blueOffset: blueOffset)
-            return Color(red: color.red, green: color.green, blue: color.blue, opacity: alpha)
-        }
-    #endif
-
-    private func color(redOffset: Int = 0, greenOffset: Int = 0, blueOffset: Int = 0) -> ColorDoubles {
-        var baseRed = redOffset
-        if abs(redOffset) > 255 {
-            baseRed = 0
-        }
-        var baseGreen = greenOffset
-        if abs(greenOffset) > 255 {
-            baseGreen = 0
-        }
-        var baseBlue = blueOffset
-        if abs(blueOffset) > 255 {
-            baseBlue = 0
-        }
-        let red = CGFloat((Int.random(in: 0...255) + baseRed) / 2) / 255.0
-        let green = CGFloat((Int.random(in: 0...255) + baseGreen) / 2) / 255.0
-        let blue = CGFloat((Int.random(in: 0...255) + baseBlue) / 2) / 255.0
-        return ColorDoubles(red: red, green: green, blue: blue)
-    }
-
     func macAddress() -> String {
         (0...5).reduce("") { partialResult, index in
             "\(partialResult)\(hexaDecimal(count: 2).lowercased())\(index == 5 ? "" : ":")"
