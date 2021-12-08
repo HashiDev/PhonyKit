@@ -1,7 +1,7 @@
 // Company
 
 public extension Phony {
-    private func suffixes() -> [String] {
+    private func companySuffixes() -> [String] {
         self.definitions.companySuffix
     }
 
@@ -19,7 +19,7 @@ public extension Phony {
     }
 
     func companySuffix() -> String {
-        self.suffixes().randomElement()!
+        self.companySuffixes().randomElement()!
     }
 
     func catchPhrase() -> String {
