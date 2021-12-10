@@ -2,74 +2,86 @@
 // Hacker
 
 public extension Phony {
-    @available(*, deprecated, message: "Use 'hackerAbbreviation()' instead. Will be removed in v3.0.0.")
-    func abbreviation() -> String {
-        self.hackerAbbreviation()
-    }
-    
+    /// This function returns a random hacker abbreviation.
+    ///
+    /// Usage:
+    ///
+    ///     print(Phony.default.hackerAbbreviation()) // TCP
+    ///
+    /// - Returns: An abbreviated hacker string.
     func hackerAbbreviation() -> String {
         self.definitions.hackerAbbreviation.randomElement()!
     }
-
-    @available(*, deprecated, message: "Use 'hackerAdjective()' instead. Will be removed in v3.0.0.")
-    func adjective() -> String {
-        self.hackerAdjective()
-    }
     
+    /// This function returns a random hacker adjective.
+    ///
+    /// Usage:
+    ///
+    ///     print(Phony.default.hackerAdjective()) // redundant
+    ///
+    /// - Returns: An adjective hacker string.
     func hackerAdjective() -> String {
         self.definitions.hackerAdjective.randomElement()!
     }
-
-    @available(*, deprecated, message: "Use 'hackerNoun()' instead. Will be removed in v3.0.0.")
-    func noun() -> String {
-        self.hackerNoun()
-    }
     
+    /// This function returns a random hacker noun.
+    ///
+    /// Usage:
+    ///
+    ///     print(Phony.default.hackerNoun()) // monitor
+    ///
+    /// - Returns: A hacker noun string.
     func hackerNoun() -> String {
         self.definitions.hackerNoun.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerVerb()' instead. Will be removed in v3.0.0.")
-    func verb() -> String {
-         self.hackerVerb()
-    }
-
+    /// This function returns a random hacker verb.
+    ///
+    /// Usage:
+    ///
+    ///     print(Phony.default.hackerVerb()) // quantify
+    ///
+    /// - Returns: A hacker verb string.
     func hackerVerb() -> String {
          self.definitions.hackerVerb.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerIngVerb()' instead. Will be removed in v3.0.0.")
-    func ingverb() -> String {
-        self.hackerIngVerb()
-    }
-
+    /// This function returns a random hacker verb that ends in "ing".
+    ///
+    /// Usage:
+    ///
+    ///     print(Phony.default.hackerIngVerb()) // connecting
+    ///
+    /// - Returns: A hacker verb string that ends in "ing".
     func hackerIngVerb() -> String {
         self.definitions.hackerIngVerb.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerPhrase()' instead. Will be removed in v3.0.0.")
-    func phrase() -> String {
-        self.hackerPhrase()
-    }
-
+    /// This function returns a random hacker phrase using concatenation.
+    ///
+    /// Usage:
+    ///
+    ///     print(Phony.default.hackerPhrase()) // We need to compress the auxiliary USB transmitter!
+    ///
+    /// - Returns: A random hacker phrase string.
     func hackerPhrase() -> String {
-        let abbreviation = self.hackerAbbreviation()
-        let adjective = self.hackerAdjective()
-        let ingverb = self.hackerIngVerb()
-        let noun = self.hackerNoun()
-        let verb = self.hackerVerb()
-
-        let phrases = [
-            "If we \(verb) the \(noun), we can get to the \(abbreviation) \(noun) through the \(adjective) \(abbreviation) \(noun)!",
-            "We need to \(verb) the \(adjective) \(abbreviation) \(noun)!",
-            "Try to \(verb) the \(abbreviation) \(noun), maybe it will \(verb) the \(adjective) \(noun)!",
-            "You can't \(verb) the \(noun) without \(ingverb) the \(adjective) \(abbreviation) \(noun)!",
-            "Use the \(adjective) \(abbreviation) \(noun), then you can \(verb) the \(adjective) \(noun)!",
-            "The \(abbreviation) \(noun) is down, \(verb) the \(adjective) \(noun) so we can \(verb) the \(abbreviation) \(noun)!",
-            "\(ingverb) the \(noun) won't do anything, we need to \(verb) the \(adjective) \(abbreviation) \(noun)!",
-            "I'll \(verb) the \(adjective) \(abbreviation) \(noun), that should \(noun) the \(abbreviation) \(noun)!"
-        ]
-
-        return phrases.randomElement()!
+        switch Int.random(in: 0...7) {
+        case 0:
+            return "If we \(self.hackerVerb()) the \(self.hackerNoun()), we can get to the \(self.hackerAbbreviation()) \(self.hackerNoun()) through the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun())!"
+        case 1:
+            return "We need to \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun())!"
+        case 2:
+            return "Try to \(self.hackerVerb()) the \(self.hackerAbbreviation()) \(self.hackerNoun()), maybe it will \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerNoun())!"
+        case 3:
+            return "You can't \(self.hackerVerb()) the \(self.hackerNoun()) without \(self.hackerIngVerb()) the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun())!"
+        case 4:
+            return "Use the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun()), then you can \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerNoun())!"
+        case 5:
+            return "The \(self.hackerAbbreviation()) \(self.hackerNoun()) is down, \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerNoun()) so we can \(self.hackerVerb()) the \(self.hackerAbbreviation()) \(self.hackerNoun())!"
+        case 6:
+            return "\(self.hackerIngVerb()) the \(self.hackerNoun()) won't do anything, we need to \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun())!"
+        default:
+            return  "I'll \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun()), that should \(self.hackerNoun()) the \(self.hackerAbbreviation()) \(self.hackerNoun())!"
+        }
     }
 }

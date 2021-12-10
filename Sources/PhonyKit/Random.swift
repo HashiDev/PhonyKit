@@ -3,11 +3,17 @@ import Foundation
 // Random
 
 public extension Phony {
+    /// Returns a random dictionary element based on type.
+    /// - Parameter dictionary: A typed dictionary of type `T`.
+    /// - Returns: A random element of type `T` from the given dictionary.
     func dictionaryElement<T>(dictionary: [String: T]) -> T? {
         let key = dictionary.keys.sorted().randomElement() ?? ""
         return dictionary[key]
     }
 
+    /// Returns a real word if you hate latin and just need some text.
+    ///
+    /// - Returns: A random real word.
     func realWord() -> String {
         switch Int.random(in: 0...23) {
         case 0:
@@ -61,10 +67,18 @@ public extension Phony {
         }
     }
 
+    /// Returns real words if you are tired of latin and just need some text.
+    /// - Parameter count: The number of random words to generate. Defaults to between 1 and 3 inclusive.
+    /// - Returns: A small "sentence" made of real words.
     func realWords(toReturn count: Int = Int.random(in: 1...3)) -> String {
         (1...count).map { _ in self.realWord() }.joined(separator: "")
     }
 
+    /// Returns a String of random alphabet characters.
+    /// - Parameters:
+    ///     - count: The number of random letters to generate. Defaults to 5.
+    ///     - upperCased: A bool to determine if you'd like the String uppercased. Defaults to false.
+    /// - Returns: A String made up of letters.
     func alpha(count: Int = 5, upperCased: Bool = false) -> String {
         let wholeString = (1...count).reduce("") { partialResult, _ in "\(partialResult)\(String.random(in: "a"..."z"))" }
         if upperCased {
@@ -73,10 +87,18 @@ public extension Phony {
         return wholeString
     }
 
+    /// Returns a String of random alphanumeric characters.
+    /// - Parameters:
+    ///     - count: The number of random characters to generate. Defaults to 5.
+    /// - Returns: A String made up of letters and numbers.
     func alphaNumeric(count: Int = 5) -> String {
         (1...count).map { _ in Bool.random() ? String.random(in: "0"..."9") : String.random(in: "a"..."z") }.joined(separator: "")
     }
 
+    /// Returns a String of hexadecimal characters.
+    /// - Parameters:
+    ///     - count: The number of random characters to generate. Defaults to 6.
+    /// - Returns: A hexadecimal String.
     func hexaDecimal(count: Int = 6) -> String {
         var wholeString = ""
         for _ in 1...count {

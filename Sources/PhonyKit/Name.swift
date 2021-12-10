@@ -58,14 +58,25 @@ public extension Phony {
         }
     }
 
+    /// Creates a job title.
+    ///
+    /// - Returns: A randomized job title string.
     func jobTitle() -> String {
         "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
     }
-
+    /// Creates a gender.
+    ///
+    /// - Returns: a gender enum
     func gender() -> Gender {
         [Gender.male, Gender.female].randomElement()!
     }
 
+    /// Creates a name prefix based on gender.
+    ///
+    /// - Parameters:
+    ///   - gender: Gender enum, defaults to `.male`
+    ///
+    /// - Returns: A String gendered name prefix
     func prefix(for gender: Gender = .male) -> String {
         switch gender {
         case .male:
@@ -75,6 +86,12 @@ public extension Phony {
         }
     }
 
+    /// Creates a name suffix based on gender.
+    ///
+    /// - Parameters:
+    ///   - gender: Gender enum, defaults to `.male`
+    ///
+    /// - Returns: A String gendered name suffix
     func suffix(for gender: Gender = .male) -> String {
         switch gender {
         case .male:
@@ -84,18 +101,23 @@ public extension Phony {
         }
     }
 
-    func title() -> String {
-        "\(self.jobDescriptor()) \(self.jobArea()) \(self.jobType())"
-    }
-
+    /// Returns a random job description String.
+    ///
+    /// - Returns: a job descriptor String
     func jobDescriptor() -> String {
         self.definitions.titleDecriptor.randomElement()!
     }
 
+    /// Returns a random job area String.
+    ///
+    /// - Returns: a job area String
     func jobArea() -> String {
         self.definitions.titleLevel.randomElement()!
     }
 
+    /// Returns a random job type String.
+    ///
+    /// - Returns: a job type String
     func jobType() -> String {
         self.definitions.titleJob.randomElement()!
     }
