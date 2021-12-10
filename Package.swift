@@ -22,10 +22,6 @@ let package = Package(
         .target(
             name: "PhonyKit",
             dependencies: []
-        ),
-        .testTarget(
-            name: "PhonyKitTests",
-            dependencies: ["PhonyKit"]
         )
     ]
 )
