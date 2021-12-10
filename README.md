@@ -9,8 +9,8 @@
     
     ...
 
-    var randomName = Phony.default.fullName(); // Rowan Nikolaus
-    var randomEmail = Phony.default.email(); // Kassandra.Haley@gmail.com
+    var randomName = Phony.default.fullName() // Henrietta Cremin
+    var randomEmail = Phony.default.email() // Ben.Grady@gmail.com
 ```
 
 ## Types of available data
