@@ -49,7 +49,10 @@ public extension Phony {
     ///
     /// Usage:
     ///
-    ///     print(Phony.default.past()...Phony.default.future()) // Dec 4, 2021 at 12:01 PM
+    ///
+    ///     let past = Phony.default.past()
+    ///     let future = Phony.default.future()
+    ///     print(Phony.default.between(dateRange: past...future)) // Dec 4, 2021 at 12:01 PM
     ///
     /// - Parameter dateRange: A closed range of dates
     ///
