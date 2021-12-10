@@ -126,7 +126,7 @@ public extension Phony {
         }
     }
 
-    /// This function returns a random hex color using provided values, or using generated data.
+    /// This function returns lines of lorem text.
     ///
     /// Usage:
     ///
