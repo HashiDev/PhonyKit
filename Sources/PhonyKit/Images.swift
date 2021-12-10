@@ -15,10 +15,6 @@ public extension Phony {
 
     /// This function returns a random image (picsum or unsplash) in String format.
     ///
-    /// Usage:
-    ///
-    ///     print(Phony.default.image()) // https://source.unsplash.com/category/buildings/869x508
-    ///     print(Phony.default.image()) // https://picsum.photos/seed/445A9EC6-B30E-4933-9CF5-0EEA4B813D04/598/489
     /// - Parameters:
     ///     - width: An Int representing the desired width of the image
     ///     - height: An Int representing the desired height of the image
@@ -29,10 +25,6 @@ public extension Phony {
 
     /// This function returns a random image (picsum or unsplash) URL.
     ///
-    /// Usage:
-    ///
-    ///     print(Phony.default.image()) // https://source.unsplash.com/category/buildings/869x508
-    ///     print(Phony.default.image()) // https://picsum.photos/seed/445A9EC6-B30E-4933-9CF5-0EEA4B813D04/598/489
     /// - Parameters:
     ///     - width: An Int representing the desired width of the image
     ///     - height: An Int representing the desired height of the image
@@ -42,10 +34,6 @@ public extension Phony {
     }
 
     /// This function returns a random avatar image String.
-    ///
-    /// Usage:
-    ///
-    ///     print(Phony.default.avatar()) // https://s3.amazonaws.com/uifaces/faces/twitter/iamgarth/128.jpg
     ///
     /// - Returns: An avatar image String.
     func avatar() -> String {
@@ -65,10 +53,6 @@ public extension Phony {
 
     /// This function returns a random unsplash image string.
     ///
-    /// Usage:
-    ///
-    ///     print(Phony.default.unsplash()) // https://source.unsplash.com/category/food/2493x1925
-    ///
     /// - Parameters:
     ///     - width: An Int representing the desired width of the image
     ///     - height: An Int representing the desired height of the image
@@ -87,10 +71,6 @@ public extension Phony {
 
     /// This function returns a random unsplash image URL.
     ///
-    /// Usage:
-    ///
-    ///     print(Phony.default.unsplash()) // https://source.unsplash.com/category/food/2493x1925
-    ///
     /// - Parameters:
     ///     - width: An Int representing the desired width of the image
     ///     - height: An Int representing the desired height of the image
@@ -103,9 +83,6 @@ public extension Phony {
 
     /// This function returns a random picsum image in String format.
     ///
-    /// Usage:
-    ///
-    ///     print(Phony.default.picsum()) // https://picsum.photos/seed/445A9EC6-B30E-4933-9CF5-0EEA4B813D04/598/489
     /// - Parameters:
     ///     - seed: UUID That holds the image uniqueness.
     ///     - width: An Int representing the desired width of the image
@@ -117,9 +94,6 @@ public extension Phony {
 
     /// This function returns a random picsum image URL.
     ///
-    /// Usage:
-    ///
-    ///     print(Phony.default.picsum()) // https://picsum.photos/seed/445A9EC6-B30E-4933-9CF5-0EEA4B813D04/598/489
     /// - Parameters:
     ///     - seed: UUID That holds the image uniqueness.
     ///     - width: An Int representing the desired width of the image
