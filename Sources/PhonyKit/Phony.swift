@@ -6,7 +6,6 @@ public class Phony {
 
     internal var definitions: Definitions
 
-    
     /// Creates a Phony instance that provides access to lots of fake data.
     /// - Parameter definitions: The type of fake data to use.
     public init(definitions: DefinitionsType) {
@@ -17,11 +16,6 @@ public class Phony {
     /// - Parameter type: DefinitionsType enum. If you aren't happy with the default, it can be changed globally here.
     public func setDefinitions(to type: DefinitionsType) {
         self.definitions = type.definitions
-    }
-
-    @available(*, deprecated, renamed: "default.setDefinitions(to:)", message: "Will be removed in v3.0.0")
-    public static func setDefaultDefinitions(to type: DefinitionsType) {
-        Phony.default.setDefinitions(to: type)
     }
 
     /// The different types of available definitions.
@@ -43,5 +37,12 @@ public class Phony {
                 return custom
             }
         }
+    }
+}
+
+public extension Phony {
+    @available(*, unavailable, renamed: "default.setDefinitions(to:)")
+    static func setDefaultDefinitions(to type: DefinitionsType) {
+        Phony.default.setDefinitions(to: type)
     }
 }
