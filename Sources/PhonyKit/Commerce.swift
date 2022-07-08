@@ -1,7 +1,8 @@
-// Commerce
+import Foundation
 
+/// Commerce
 public extension Phony {
-    @available(*, deprecated, renamed: "productColor()" , message: "Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "productColor()", message: "Will be removed in v3.0.0.")
     func color() -> String {
         self.productColor()
     }

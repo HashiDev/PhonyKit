@@ -1,5 +1,6 @@
-// Helpers
+import Foundation
 
+/// Helpers
 public extension Phony {
     func slugify(str: String) -> String {
         str.replacingOccurrences(of: " ", with: "-").trimmingCharacters(in: .whitespacesAndNewlines)

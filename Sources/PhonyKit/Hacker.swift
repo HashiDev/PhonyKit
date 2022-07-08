@@ -1,12 +1,12 @@
+import Foundation
 
-// Hacker
-
+/// Hacker
 public extension Phony {
     @available(*, deprecated, renamed: "hackerAbbreviation()", message: "Will be removed in v3.0.0.")
     func abbreviation() -> String {
         self.hackerAbbreviation()
     }
-    
+
     func hackerAbbreviation() -> String {
         self.definitions.hackerAbbreviation.randomElement()!
     }
@@ -15,7 +15,7 @@ public extension Phony {
     func adjective() -> String {
         self.hackerAdjective()
     }
-    
+
     func hackerAdjective() -> String {
         self.definitions.hackerAdjective.randomElement()!
     }
@@ -24,18 +24,18 @@ public extension Phony {
     func noun() -> String {
         self.hackerNoun()
     }
-    
+
     func hackerNoun() -> String {
         self.definitions.hackerNoun.randomElement()!
     }
 
     @available(*, deprecated, renamed: "hackerVerb()", message: "Will be removed in v3.0.0.")
     func verb() -> String {
-         self.hackerVerb()
+        self.hackerVerb()
     }
 
     func hackerVerb() -> String {
-         self.definitions.hackerVerb.randomElement()!
+        self.definitions.hackerVerb.randomElement()!
     }
 
     @available(*, deprecated, renamed: "hackerIngVerb()", message: "Will be removed in v3.0.0.")

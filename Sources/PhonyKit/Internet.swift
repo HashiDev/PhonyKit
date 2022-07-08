@@ -1,7 +1,6 @@
 import Foundation
 
-// Internet
-
+/// Internet
 public extension Phony {
     func email(firstName: String? = nil, lastName: String? = nil, provider: String = ["gmail.com", "yahoo.com", "hotmail.com"].randomElement()!) -> String {
         self.slugify(str: self.userName(firstName: firstName, lastName: lastName)) + "@" + provider

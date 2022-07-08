@@ -1,8 +1,8 @@
+import Foundation
 
-// Lorem
-
+/// Lorem
 public extension Phony {
-    @available(*, deprecated, renamed: "loremWord()",  message: "Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "loremWord()", message: "Will be removed in v3.0.0.")
     func word() -> String {
         self.loremWord()
     }
@@ -25,7 +25,7 @@ public extension Phony {
         let sentence = self.words(Int.random(in: 3...10))
         return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
     }
-    
+
     func loremSentence() -> String {
         let sentence = self.loremWords(Int.random(in: 3...10))
         return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
@@ -67,7 +67,7 @@ public extension Phony {
         (1...paragraphCount).map { _ in self.loremParagraph() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    @available(*, deprecated, renamed: "loremText()",  message: "Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "loremText()", message: "Will be removed in v3.0.0.")
     func text() -> String {
         self.loremText()
     }

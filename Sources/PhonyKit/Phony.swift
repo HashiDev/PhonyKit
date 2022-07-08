@@ -1,3 +1,5 @@
+import Foundation
+
 public class Phony {
     public static var `default`: Phony = .init(definitions: .default)
 
@@ -10,7 +12,7 @@ public class Phony {
     public func setDefinitions(to type: DefinitionsType) {
         self.definitions = type.definitions
     }
-    
+
     @available(*, deprecated, renamed: "default.setDefinitions(to:)", message: "Will be removed in v3.0.0")
     public static func setDefaultDefinitions(to type: DefinitionsType) {
         Phony.default.setDefinitions(to: type)

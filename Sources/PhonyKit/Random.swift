@@ -1,7 +1,6 @@
 import Foundation
 
-// Random
-
+/// Random
 public extension Phony {
     func dictionaryElement<T>(dictionary: [String: T]) -> T? {
         let key = dictionary.keys.sorted().randomElement() ?? ""
