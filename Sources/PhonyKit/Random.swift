@@ -1,7 +1,6 @@
 import Foundation
 
-// Random
-
+/// Random
 public extension Phony {
     /// Returns a random dictionary element based on type.
     /// - Parameter dictionary: A typed dictionary of type `T`.

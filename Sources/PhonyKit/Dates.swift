@@ -1,7 +1,6 @@
 import Foundation
 
-// Dates
-
+/// Dates
 public extension Phony {
     private func yearsToSeconds(numberOfYears: Int) -> Double {
         return Double(numberOfYears * 365 * 24 * 3600)

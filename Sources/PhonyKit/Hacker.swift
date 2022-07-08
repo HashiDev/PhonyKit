@@ -1,6 +1,6 @@
+import Foundation
 
-// Hacker
-
+/// Hacker
 public extension Phony {
     /// This function returns a random hacker abbreviation.
     ///
@@ -12,7 +12,7 @@ public extension Phony {
     func hackerAbbreviation() -> String {
         self.definitions.hackerAbbreviation.randomElement()!
     }
-    
+
     /// This function returns a random hacker adjective.
     ///
     /// Usage:
@@ -23,7 +23,7 @@ public extension Phony {
     func hackerAdjective() -> String {
         self.definitions.hackerAdjective.randomElement()!
     }
-    
+
     /// This function returns a random hacker noun.
     ///
     /// Usage:
@@ -43,7 +43,7 @@ public extension Phony {
     ///
     /// - Returns: A hacker verb string.
     func hackerVerb() -> String {
-         self.definitions.hackerVerb.randomElement()!
+        self.definitions.hackerVerb.randomElement()!
     }
 
     /// This function returns a random hacker verb that ends in "ing".
@@ -81,7 +81,39 @@ public extension Phony {
         case 6:
             return "\(self.hackerIngVerb()) the \(self.hackerNoun()) won't do anything, we need to \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun())!"
         default:
-            return  "I'll \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun()), that should \(self.hackerNoun()) the \(self.hackerAbbreviation()) \(self.hackerNoun())!"
+            return "I'll \(self.hackerVerb()) the \(self.hackerAdjective()) \(self.hackerAbbreviation()) \(self.hackerNoun()), that should \(self.hackerNoun()) the \(self.hackerAbbreviation()) \(self.hackerNoun())!"
         }
+    }
+}
+
+public extension Phony {
+    @available(*, unavailable, renamed: "hackerAbbreviation()")
+    func abbreviation() -> String {
+        self.hackerAbbreviation()
+    }
+
+    @available(*, unavailable, renamed: "hackerAdjective()")
+    func adjective() -> String {
+        self.hackerAdjective()
+    }
+
+    @available(*, unavailable, renamed: "hackerNoun()")
+    func noun() -> String {
+        self.hackerNoun()
+    }
+
+    @available(*, unavailable, renamed: "hackerVerb()")
+    func verb() -> String {
+        self.hackerVerb()
+    }
+
+    @available(*, unavailable, renamed: "hackerIngVerb()")
+    func ingverb() -> String {
+        self.hackerIngVerb()
+    }
+
+    @available(*, unavailable, renamed: "hackerPhrase()")
+    func phrase() -> String {
+        self.hackerPhrase()
     }
 }
