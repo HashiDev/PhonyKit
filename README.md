@@ -4,7 +4,7 @@
 
 ## Usage
 
-```
+```Swift
     import PhonyKit
     
     ...
