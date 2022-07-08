@@ -1,5 +1,6 @@
+import Foundation
 
-// PhoneNumber
+/// PhoneNumber
 public extension Phony {
     /// Creates a mock phone number.
     ///
@@ -8,7 +9,7 @@ public extension Phony {
     ///
     /// - Returns: A mock phone number
     func phoneNumber(format: String? = nil) -> String {
-         self.replaceSymbolWithNumber(string: format ?? self.phoneFormat())
+        self.replaceSymbolWithNumber(string: format ?? self.phoneFormat())
     }
 
     /// Creates a mock phone number.

@@ -1,3 +1,5 @@
+import Foundation
+
 public class Phony {
     /// The public `default` instance of Phony.
     public static var `default`: Phony = .init(definitions: .default)

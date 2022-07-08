@@ -1,5 +1,6 @@
-// Commerce
+import Foundation
 
+/// Commerce
 public extension Phony {
     /// This function returns a random color name.
     ///
@@ -10,6 +11,11 @@ public extension Phony {
     /// - Returns: A color name string.
     func productColor() -> String {
         self.definitions.colors.randomElement()!
+    }
+
+    @available(*, unavailable, renamed: "productColor()")
+    func color() -> String {
+        self.productColor()
     }
 
     /// This function returns a random product department.

@@ -1,8 +1,6 @@
-
 import Foundation
 
-// Video
-
+/// Video
 public extension Phony {
     /// This function returns a random video URL String.
     ///

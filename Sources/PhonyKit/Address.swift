@@ -1,7 +1,6 @@
 import Foundation
 
-// Address
-
+/// Address
 public extension Phony {
     /// This function returns a zip code string for a given format. If no format is given, one is chosen from the selected definitions file.
     ///

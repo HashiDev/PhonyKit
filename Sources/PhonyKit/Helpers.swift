@@ -1,5 +1,6 @@
-// Helpers
+import Foundation
 
+/// Helpers
 public extension Phony {
     /// This function returns a given string "slugified", which is having spaces replaced by dashes.
     ///

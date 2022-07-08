@@ -1,8 +1,7 @@
+import Foundation
 
-// Lorem
-
+/// Lorem
 public extension Phony {
-
     /// This function returns a random single lorem ipsum word.
     ///
     /// Usage:
@@ -28,7 +27,7 @@ public extension Phony {
     func loremWords(_ num: Int = 3, _ separator: String = " ") -> String {
         (1...num).map { _ in self.loremWord() }.joined(separator: separator).trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    
+
     /// This function returns a medium lorem ipsum sentence between 3 and 10 words inclusive.
     ///
     /// Usage:
@@ -139,5 +138,53 @@ public extension Phony {
     /// - Returns: A String with a number of lines of lorem text.
     func loremLines(_ lineCount: Int = Int.random(in: 1...5), _ separator: String = "\n") -> String {
         self.loremSentences(lineCount, separator)
+    }
+}
+
+public extension Phony {
+    @available(*, unavailable, renamed: "loremWord()")
+    func word() -> String {
+        self.loremWord()
+    }
+
+    @available(*, unavailable, renamed: "loremWords()")
+    func words(_ num: Int = 3, _ separator: String = " ") -> String {
+        self.loremWords(num, separator)
+    }
+
+    @available(*, unavailable, renamed: "loremSentence()")
+    func sentence() -> String {
+        let sentence = self.loremWords(Int.random(in: 3...10))
+        return "\(sentence.prefix(1).uppercased())\(sentence.lowercased().dropFirst())."
+    }
+
+    @available(*, unavailable, renamed: "loremSlug()")
+    func slug(wordCount: Int = 3) -> String {
+        self.loremSlug(wordCount: wordCount)
+    }
+
+    @available(*, unavailable, renamed: "loremSentences()")
+    func sentences(_ sentenceCount: Int = Int.random(in: 2...6), _ separator: String = " ") -> String {
+        self.loremSentences(sentenceCount, separator)
+    }
+
+    @available(*, unavailable, renamed: "loremParagraph()")
+    func paragraph(_ sentenceCount: Int = 3, _ separator: String = " ") -> String {
+        self.loremParagraph(sentenceCount, separator)
+    }
+
+    @available(*, unavailable, renamed: "loremParagraphs()")
+    func paragraphs(_ paragraphCount: Int = 3, _ separator: String = "\n \r") -> String {
+        self.loremParagraphs(paragraphCount, separator)
+    }
+
+    @available(*, unavailable, renamed: "loremText()")
+    func text() -> String {
+        self.loremText()
+    }
+
+    @available(*, unavailable, renamed: "loremLines()")
+    func lines(_ lineCount: Int = Int.random(in: 1...5), _ separator: String = "\n") -> String {
+        self.loremLines(lineCount, separator)
     }
 }

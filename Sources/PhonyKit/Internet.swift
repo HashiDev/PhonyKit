@@ -1,6 +1,6 @@
 import Foundation
-// Internet
 
+/// Internet
 public extension Phony {
     /// This function returns a mock email using user provided data, or completely generated.
     ///
