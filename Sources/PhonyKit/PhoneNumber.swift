@@ -1,8 +1,9 @@
+import Foundation
 
-// PhoneNumber
+/// PhoneNumber
 public extension Phony {
     func phoneNumber(format: String? = nil) -> String {
-         self.replaceSymbolWithNumber(string: format ?? self.phoneFormat())
+        self.replaceSymbolWithNumber(string: format ?? self.phoneFormat())
     }
 
     func phoneNumber(index: Int = 0) -> String {

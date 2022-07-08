@@ -1,5 +1,6 @@
-// Company
+import Foundation
 
+/// Company
 public extension Phony {
     private func suffixes() -> [String] {
         self.definitions.companySuffix

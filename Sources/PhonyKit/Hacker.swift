@@ -1,44 +1,44 @@
+import Foundation
 
-// Hacker
-
+/// Hacker
 public extension Phony {
-    @available(*, deprecated, message: "Use 'hackerAbbreviation()' instead. Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "hackerAbbreviation()", message: "Will be removed in v3.0.0.")
     func abbreviation() -> String {
         self.hackerAbbreviation()
     }
-    
+
     func hackerAbbreviation() -> String {
         self.definitions.hackerAbbreviation.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerAdjective()' instead. Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "hackerAdjective()", message: "Will be removed in v3.0.0.")
     func adjective() -> String {
         self.hackerAdjective()
     }
-    
+
     func hackerAdjective() -> String {
         self.definitions.hackerAdjective.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerNoun()' instead. Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "hackerNoun()", message: "Will be removed in v3.0.0.")
     func noun() -> String {
         self.hackerNoun()
     }
-    
+
     func hackerNoun() -> String {
         self.definitions.hackerNoun.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerVerb()' instead. Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "hackerVerb()", message: "Will be removed in v3.0.0.")
     func verb() -> String {
-         self.hackerVerb()
+        self.hackerVerb()
     }
 
     func hackerVerb() -> String {
-         self.definitions.hackerVerb.randomElement()!
+        self.definitions.hackerVerb.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerIngVerb()' instead. Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "hackerIngVerb()", message: "Will be removed in v3.0.0.")
     func ingverb() -> String {
         self.hackerIngVerb()
     }
@@ -47,7 +47,7 @@ public extension Phony {
         self.definitions.hackerIngVerb.randomElement()!
     }
 
-    @available(*, deprecated, message: "Use 'hackerPhrase()' instead. Will be removed in v3.0.0.")
+    @available(*, deprecated, renamed: "hackerPhrase()", message: "Will be removed in v3.0.0.")
     func phrase() -> String {
         self.hackerPhrase()
     }

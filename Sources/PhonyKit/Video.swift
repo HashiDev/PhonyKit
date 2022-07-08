@@ -1,8 +1,6 @@
-
 import Foundation
 
-// Video
-
+/// Video
 public extension Phony {
     func video() -> String {
         self.definitions.videoUris.randomElement()!
