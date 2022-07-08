@@ -22,7 +22,7 @@ let package = Package(
         .target(
             name: "PhonyKit",
             dependencies: [],
-            resources: [.copy("Resources")]
+            resources: [.process("Resources")]
         )
     ]
 )
