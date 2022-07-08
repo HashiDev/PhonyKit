@@ -1,3 +1,5 @@
+import Foundation
+
 public protocol Definitions {
     var colors: [String] { get }
     var departments: [String] { get }

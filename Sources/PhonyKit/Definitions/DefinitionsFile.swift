@@ -1,3 +1,4 @@
+import Foundation
 
 internal struct DefinitionsFile: Decodable {
     let colors: [String]?
